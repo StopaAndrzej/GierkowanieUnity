@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarsMovement : MonoBehaviour {
+public class CarIA : MonoBehaviour {
 
 	public Color lineColor;
-	private List<Transform> nodes = new List<Transform> ();
+	private List<Transform> nodes = new List<Transform>();
 
-	void OnDrawGizmosSelected(){
+
+	void OnDrawGizmosSelected()
+	{
 		Gizmos.color = lineColor;
-
 		Transform[] pathTransforms = GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 
@@ -25,14 +26,14 @@ public class CarsMovement : MonoBehaviour {
 
 			if (i > 0) {
 				previousNode = nodes [i - 1].position;
-			}
-			else if (i == 0 && nodes.Count > 1) {
-				previousNode = nodes [nodes.Count - 1].position;					
+			} else if(i == 0 && nodes.Count > 1){
+				previousNode = nodes [nodes.Count - 1].position;
 			}
 
 			Gizmos.DrawLine (previousNode, currentNode);
-			Gizmos.DrawWireSphere (currentNode, 5f);
+			Gizmos.DrawWireSphere (currentNode, 0.6f);
 		}
 	}
+
 
 }
