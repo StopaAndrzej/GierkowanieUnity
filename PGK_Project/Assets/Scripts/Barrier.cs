@@ -4,14 +4,30 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour {
 
-    Animator animator;
+    private Animator animator;
+    private bool closed = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
     private void OnMouseDown()
     {
-        animator.SetTrigger("CloseBarrier");
+        if (!closed)
+        {
+            animator.SetTrigger("CloseBarrier");
+            closed = true;
+        } else
+        {
+            animator.enabled = true;
+            closed = false;
+        }
+    }
+
+    private void pauseAnimationEvent()
+    {
+        animator.enabled = false;
+        closed = true;
     }
 
 }
