@@ -7,11 +7,12 @@ public class CarMovement : MonoBehaviour {
 	public Transform path;
 	public float maxSteerAngle = 40f;
 	public float moveSpeed;
+    public double timer = 0.0;
+    public Transform spawnPos;
 
 
-	private List<Transform> nodes;
+    private List<Transform> nodes;
 	private int currentNode = 0;
-
 
 	void Start () {
 		Transform[] pathTransforms = path.GetComponentsInChildren<Transform> ();
@@ -22,6 +23,7 @@ public class CarMovement : MonoBehaviour {
 				nodes.Add (pathTransforms [i]);
 			}
 		}
+        spawnPos = GameObject.FindGameObjectWithTag("CarSpawnPos").transform;
 	}
 	
 
@@ -56,10 +58,20 @@ public class CarMovement : MonoBehaviour {
 		}
 	}
 
-    void DestroyObjectDelayed()
+    // Update is called once per frame
+    void Update()
     {
-        // Kills the game object in 5 seconds after loading the object
-        Destroy(gameObject, 5);
+        timer += Time.deltaTime;
+        if (timer > 1000)
+        {
+            spawnCar();
+            timer = 0.0;
+        }
+
     }
 
+    void spawnCar()
+    {
+        Instantiate(gameObject, spawnPos);
+    }
 }
