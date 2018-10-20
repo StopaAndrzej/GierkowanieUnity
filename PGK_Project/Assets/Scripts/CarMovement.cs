@@ -7,14 +7,16 @@ public class CarMovement : MonoBehaviour {
 	public Transform path;
 	public float maxSteerAngle = 40f;
 	public float moveSpeed;
-    public double timer = 0.0;
-    public Transform spawnPos;
-
+    public float sensorLenght = 0.5f;
+    public float frontSensorPos = 0.8f;
 
     private List<Transform> nodes;
 	private int currentNode = 0;
 
 	void Start () {
+        path = GameObject.FindGameObjectWithTag("carPath").transform;
+        //Instantiate(gameObject, )
+        //clone = gameObject;
 		Transform[] pathTransforms = path.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 
@@ -23,16 +25,29 @@ public class CarMovement : MonoBehaviour {
 				nodes.Add (pathTransforms [i]);
 			}
 		}
-        spawnPos = GameObject.FindGameObjectWithTag("CarSpawnPos").transform;
+        //spawnPos = GameObject.FindGameObjectWithTag("CarSpawnPos").transform;
 	}
 	
 
 	void FixedUpdate () {
+        Sensors();
 		ApplySteer ();
 		Drive ();
 		CheckNodeDistance ();
 	}
 
+    private void Sensors()
+    {
+        RaycastHit hit;
+        Vector3 sensorStartPos = transform.position;
+        sensorStartPos.x += frontSensorPos;
+
+        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLenght))
+        {
+
+        }
+        Debug.DrawLine(sensorStartPos, hit.point);
+    }
 	private void ApplySteer(){
 
 		Vector3 relativeVector = transform.InverseTransformPoint (nodes [currentNode].position);
@@ -61,17 +76,17 @@ public class CarMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 1000)
-        {
-            spawnCar();
-            timer = 0.0;
-        }
+        //timer += Time.deltaTime;
+        //if (timer > 10)
+        //{
+        //    spawnCar();
+        //    timer = 0.0;
+        //}
 
     }
 
     void spawnCar()
     {
-        Instantiate(gameObject, spawnPos);
+        //Instantiate(clone, spawnPos);
     }
 }
