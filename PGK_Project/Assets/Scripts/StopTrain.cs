@@ -6,7 +6,6 @@ public class StopTrain : MonoBehaviour {
 
     private bool isActive = false;
     private float lastSpeed;
-    private bool isStoped=false;
     
 
     public void OnMouseDown()
@@ -15,16 +14,12 @@ public class StopTrain : MonoBehaviour {
         {
             isActive = false;
             Debug.Log("Blocade is not active!");
-            GameObject go = GameObject.FindGameObjectWithTag("Train");
-            TrainMove tm = go.GetComponent<TrainMove>();
-            tm.speed = lastSpeed;
         }
 
         else if (!isActive)
         {
             isActive = true;
             Debug.Log("Blocade is active!");
-            
         }
     }
 
@@ -36,13 +31,12 @@ public class StopTrain : MonoBehaviour {
             {
                
                 lastSpeed = other.GetComponent<TrainMove>().speed;
-                other.GetComponent<TrainMove>().speed = 0;
+                other.GetComponent<TrainMove>().speed = 1000;
                 Debug.Log("Train stoped!");
                 
             }
            
         }
-       
  
     }
 
