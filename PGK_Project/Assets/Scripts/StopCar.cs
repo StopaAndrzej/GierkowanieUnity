@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StopCar : MonoBehaviour {
 
+    public float moveSpeed;
 
     public GameObject car;
 	// Use this for initialization
@@ -18,9 +19,24 @@ public class StopCar : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == "TestCollider")
-        Debug.Log("SSIEMMMA ENIIIUUU!");
-        //car.GetComponent<CarMovement>().moveSpeed = 0;
+        Debug.Log(gameObject.name + " collided with " + other.name);
+        //Debug.Log("SSIEMMMA ENIIIUUU!");
+        if(other.transform.tag == "barrier"
+            || other.transform.tag == "car")
+        {
+            moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
+            car.GetComponent<CarMovement>().moveSpeed = 0;
+        } else if (other.transform.tag == "Train")
+        {
+            Debug.Log("GAME OVER");
+        }
         
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "barrier"
+            || other.transform.tag == "car") {
+            car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
+        }
     }
 }

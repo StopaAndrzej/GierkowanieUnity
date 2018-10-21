@@ -64,10 +64,8 @@ public class CarMovement : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "TestCollider")
-        {
-            moveSpeed = 0;
-        }
+        Debug.Log("Collision with " + other);
+        //moveSpeed = 0;
     }
 
 

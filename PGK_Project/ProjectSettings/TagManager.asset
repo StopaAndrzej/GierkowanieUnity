@@ -8,6 +8,8 @@ TagManager:
   - carPath
   - barrier
   - TestCollider
+  - ROAD
+  - car
   layers:
   - Default
   - TransparentFX
