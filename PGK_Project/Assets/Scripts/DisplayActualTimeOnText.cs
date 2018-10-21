@@ -29,8 +29,11 @@ public class DisplayActualTimeOnText : MonoBehaviour {
     void setTime()
     {
         clockText = GetComponent<Text>();
-        hour = System.DateTime.Now.Hour;
-        minute = System.DateTime.Now.Minute;
+        hour = System.DateTime.Now.Minute;
+        minute = System.DateTime.Now.Second;
+
+        hour = hour % 24;
+
         display = "";
         if (hour < 10)
         {

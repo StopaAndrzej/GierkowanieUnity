@@ -11,9 +11,7 @@ public class TrainSpawn : MonoBehaviour {
     public int thisMinute;
     public Text[] timeTables;
 
-    public int testHour;
-    public int testMinute;
-    //public int timer=0;
+
 
     void Start()
     {
@@ -22,8 +20,9 @@ public class TrainSpawn : MonoBehaviour {
 
     void Update()
     {
-        thisHour = System.DateTime.Now.Hour;
-        thisMinute = System.DateTime.Now.Minute;
+        thisHour = System.DateTime.Now.Minute;
+        thisMinute = System.DateTime.Now.Second;
+        thisHour = thisHour % 24;
         spawnTrain();
     }
 

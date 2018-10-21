@@ -30,8 +30,11 @@ public class TrainTimeTable : MonoBehaviour {
     void setTime()
     {
         clockText = GetComponent<Text>();
-        hour = System.DateTime.Now.Hour;
-        minute = System.DateTime.Now.Minute+offset;
+        hour = System.DateTime.Now.Minute;
+        minute = System.DateTime.Now.Second+offset;
+
+        hour = hour % 24;
+
         if (minute >= 60)
         {
             hour++;
