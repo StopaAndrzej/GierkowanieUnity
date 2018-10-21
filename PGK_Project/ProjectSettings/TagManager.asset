@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Train
   - carPath
+  - barrier
+  - TestCollider
   layers:
   - Default
   - TransparentFX

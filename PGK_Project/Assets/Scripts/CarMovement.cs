@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour {
 
+
+
 	public Transform path;
 	public float maxSteerAngle = 40f;
 	public float moveSpeed;
@@ -15,8 +17,6 @@ public class CarMovement : MonoBehaviour {
 
 	void Start () {
         path = GameObject.FindGameObjectWithTag("carPath").transform;
-        //Instantiate(gameObject, )
-        //clone = gameObject;
 		Transform[] pathTransforms = path.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 
@@ -30,29 +30,18 @@ public class CarMovement : MonoBehaviour {
 	
 
 	void FixedUpdate () {
-        Sensors();
 		ApplySteer ();
 		Drive ();
 		CheckNodeDistance ();
 	}
 
-    private void Sensors()
-    {
-        RaycastHit hit;
-        Vector3 sensorStartPos = transform.position;
-        sensorStartPos.x += frontSensorPos;
-
-        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLenght))
-        {
-
-        }
-        Debug.DrawLine(sensorStartPos, hit.point);
-    }
+   
+    
 	private void ApplySteer(){
 
 		Vector3 relativeVector = transform.InverseTransformPoint (nodes [currentNode].position);
 		float newSteer = (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
-		print (newSteer);
+	
 		transform.Rotate (0, newSteer, 0);
 	}
 
@@ -73,20 +62,15 @@ public class CarMovement : MonoBehaviour {
 		}
 	}
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        //timer += Time.deltaTime;
-        //if (timer > 10)
-        //{
-        //    spawnCar();
-        //    timer = 0.0;
-        //}
-
+        if (other.transform.tag == "TestCollider")
+        {
+            moveSpeed = 0;
+        }
     }
 
-    void spawnCar()
-    {
-        //Instantiate(clone, spawnPos);
-    }
+
+
+
 }
