@@ -7,11 +7,15 @@ public class StopCar : MonoBehaviour {
     public float moveSpeed;
     public float timer = 0;
     public GameObject car;
+    public GameObject bar;
+    public GameObject barRed;
     public float scaleFactor = 0;
 	// Use this for initialization
 	void Start () {
-        GameObject.Find("AnnoyBarOfCar").GetComponent<Renderer>().enabled = false;
-        GameObject.Find("AnnoyBarOfCarRed").GetComponent<Renderer>().enabled = false;
+        bar.GetComponent<Renderer>().enabled = false;
+        barRed.GetComponent<Renderer>().enabled = false;
+        timer = 0;
+        scaleFactor = 0;
     }
 	
 	// Update is called once per frame
@@ -23,7 +27,6 @@ public class StopCar : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log(gameObject.name + " collided with " + other.name);
-        //Debug.Log("SSIEMMMA ENIIIUUU!");
 
         GameObject go = GameObject.Find("BarrierTriggerCube");
         BarrierTrigger b = go.GetComponent<BarrierTrigger>();
@@ -31,8 +34,6 @@ public class StopCar : MonoBehaviour {
         {
             moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
             car.GetComponent<CarMovement>().moveSpeed = 0;
-
-
         }
             
         else if (other.transform.tag == "Train")
@@ -51,8 +52,8 @@ public class StopCar : MonoBehaviour {
             || other.transform.tag == "car") {
             car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
             timer = 0.0f;
-            GameObject.Find("AnnoyBarOfCar").GetComponent<Renderer>().enabled = false;
-            GameObject.Find("AnnoyBarOfCarRed").GetComponent<Renderer>().enabled = false;
+            bar.GetComponent<Renderer>().enabled = false;
+            barRed.GetComponent<Renderer>().enabled = false;
             scaleFactor = 0.0f;
         }
     }
@@ -65,13 +66,13 @@ public class StopCar : MonoBehaviour {
             timer += Time.deltaTime;
             if(timer > 10.0f)
             {
-                GameObject.Find("AnnoyBarOfCar").GetComponent<Renderer>().enabled = true;
-                GameObject.Find("AnnoyBarOfCarRed").GetComponent<Renderer>().enabled = true;
+                bar.GetComponent<Renderer>().enabled = true;
+                barRed.GetComponent<Renderer>().enabled = true;
 
-                Transform t = GameObject.Find("AnnoyBarOfCarRed").transform;
-                GameObject.Find("AnnoyBarOfCarRed").transform.localScale = new Vector3(scaleFactor, 
-                                                                                        t.transform.localScale.y,
-                                                                                        t.transform.localScale.z);
+                Transform t = barRed.transform;
+                barRed.transform.localScale = new Vector3(scaleFactor, 
+                                                         t.transform.localScale.y,
+                                                         t.transform.localScale.z);
                 if(scaleFactor < 0.8)
                 {
                     scaleFactor += timer * 0.0001f;

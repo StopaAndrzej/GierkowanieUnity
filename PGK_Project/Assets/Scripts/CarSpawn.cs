@@ -26,5 +26,9 @@ public class CarSpawn : MonoBehaviour {
     void spawnCar()
     {
         Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        Debug.Log("CAR SPAWN");
+        Debug.Log("CAR SPAWN");
+        Debug.Log("CAR SPAWN");
+        Debug.Log(go.ToString());
     }
 }
