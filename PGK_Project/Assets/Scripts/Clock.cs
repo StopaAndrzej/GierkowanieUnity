@@ -19,7 +19,7 @@ public class Clock : MonoBehaviour {
     public int minute = 15;
     public int second = 0;
 
-    public DateTime currentTime = new DateTime(1, 1, 1, 2, 15, 0);
+    
 
     void Start()
     {
@@ -27,9 +27,10 @@ public class Clock : MonoBehaviour {
 
     }     
         void Update () {
-		
 
-		float secondsDegree = (currentTime.Second / 60f) * 360f;
+
+        DateTime currentTime = DateTime.Now;
+        float secondsDegree = (currentTime.Second / 60f) * 360f;
 		secondsHand.transform.localRotation = Quaternion.Euler(new Vector3 (0, secondsDegree, 0));
 
 		float minutesDegree = (currentTime.Minute / 60f) * 360f;
