@@ -27,10 +27,9 @@ public class Clock : MonoBehaviour {
 
     }     
         void Update () {
-
-
+		
         DateTime currentTime = DateTime.Now;
-        float secondsDegree = (currentTime.Second / 60f) * 360f;
+		float secondsDegree = (currentTime.Second / 60f) * 360f;
 		secondsHand.transform.localRotation = Quaternion.Euler(new Vector3 (0, secondsDegree, 0));
 
 		float minutesDegree = (currentTime.Minute / 60f) * 360f;
