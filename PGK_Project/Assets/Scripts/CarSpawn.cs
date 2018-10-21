@@ -17,7 +17,7 @@ public class CarSpawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 20)
         {
             spawnCar();
             timer = 0.0;
