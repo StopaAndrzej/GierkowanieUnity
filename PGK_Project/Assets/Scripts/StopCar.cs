@@ -7,6 +7,7 @@ public class StopCar : MonoBehaviour {
     public float moveSpeed;
 
     public GameObject car;
+    public GameObject isActive;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,14 +22,20 @@ public class StopCar : MonoBehaviour {
     {
         Debug.Log(gameObject.name + " collided with " + other.name);
         //Debug.Log("SSIEMMMA ENIIIUUU!");
-        if(other.transform.tag == "barrier"
-            || other.transform.tag == "car")
+        if(other.transform.tag == "barrier")
         {
-            moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
-            car.GetComponent<CarMovement>().moveSpeed = 0;
+           // if (isActive.GetComponent<BarrierTrigger>().isBarrierClosed==true)
+           // {
+                moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
+                car.GetComponent<CarMovement>().moveSpeed = 0;
+           // }         
         } else if (other.transform.tag == "Train")
         {
             Debug.Log("GAME OVER");
+        }else if (other.transform.tag == "car")
+        {
+            moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
+            car.GetComponent<CarMovement>().moveSpeed = 0;
         }
         
     }
