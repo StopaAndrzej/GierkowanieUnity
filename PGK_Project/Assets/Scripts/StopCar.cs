@@ -22,14 +22,16 @@ public class StopCar : MonoBehaviour {
     {
         Debug.Log(gameObject.name + " collided with " + other.name);
         //Debug.Log("SSIEMMMA ENIIIUUU!");
-        if(other.transform.tag == "barrier")
+        if(isActive.GetComponent<BarrierTrigger>().isBarrierClosed == true)
         {
-           // if (isActive.GetComponent<BarrierTrigger>().isBarrierClosed==true)
-           // {
+            if (other.transform.tag == "barrier")
+            {
+
                 moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
                 car.GetComponent<CarMovement>().moveSpeed = 0;
-           // }         
-        } else if (other.transform.tag == "Train")
+            }
+            
+        }if (other.transform.tag == "Train")
         {
             Debug.Log("GAME OVER");
         }else if (other.transform.tag == "car")
