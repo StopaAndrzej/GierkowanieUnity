@@ -7,6 +7,7 @@ public class CarSpawn : MonoBehaviour {
     public Transform pos;
     public GameObject go;
     double timer = 0.0;
+ 
 
 	// Use this for initialization
 	void Start () {

@@ -1,31 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrainSpawn : MonoBehaviour {
 
-    public Transform pos;
     public GameObject go;
-    double timer = 0.0;
 
-    // Use this for initialization
+    public int thisHour;
+    public int thisMinute;
+    public Text[] timeTables;
+
+    public int testHour;
+    public int testMinute;
+    //public int timer=0;
+
     void Start()
     {
-
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 2)
-        {
-            spawnCar();
-            timer = 0.0;
-        }
+        thisHour = System.DateTime.Now.Hour;
+        thisMinute = System.DateTime.Now.Minute;
+        spawnTrain();
     }
-    void spawnCar()
+
+    
+    void spawnTrain()
     {
-        Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        foreach( Text t in timeTables)
+        {
+            if(t.GetComponent<TrainTimeTable>().hour == thisHour && t.GetComponent<TrainTimeTable>().minute == thisMinute)
+            {
+               
+                    Instantiate(go, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+                t.GetComponent<TrainTimeTable>().hour = -1;
+
+
+            }
+        }
+       
     }
 }
