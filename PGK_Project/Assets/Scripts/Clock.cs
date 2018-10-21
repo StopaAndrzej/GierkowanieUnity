@@ -15,14 +15,19 @@ public class Clock : MonoBehaviour {
 	[SerializeField]
 	GameObject hoursHand;
 
+    public int hour = 1;
+    public int minute = 15;
+    public int second = 0;
 
-	void Start(){
+    public DateTime currentTime = new DateTime(1, 1, 1, 2, 15, 0);
+
+    void Start()
+    {
+       
+
+    }     
+        void Update () {
 		
-	}
-
-
-	void Update () {
-		DateTime currentTime = DateTime.Now;
 
 		float secondsDegree = (currentTime.Second / 60f) * 360f;
 		secondsHand.transform.localRotation = Quaternion.Euler(new Vector3 (0, secondsDegree, 0));
