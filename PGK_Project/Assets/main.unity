@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7291,7 +7291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBarrierClosed: 0
   barrierLights: []
-  baricades: []
+  baricade1: {fileID: 0}
+  baricade2: {fileID: 0}
   myMaterials:
   - {fileID: 0}
   - {fileID: 0}
@@ -7758,10 +7759,9 @@ GameObject:
   - component: {fileID: 264751334}
   - component: {fileID: 264751333}
   - component: {fileID: 264751332}
-  - component: {fileID: 264751331}
   - component: {fileID: 264751330}
   m_Layer: 0
-  m_Name: BarrierTriggerCube (1)
+  m_Name: BarrierTriggerCube1
   m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7798,24 +7798,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &264751331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 264751328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ac32a19868be849ac1a7f4f05da22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBarrierClosed: 0
-  barrierLights: []
-  baricades: []
-  myMaterials:
-  - {fileID: 2100000, guid: b8a1761c51950cb44814bbdc87d85b81, type: 2}
-  - {fileID: 2100000, guid: 0ac905f1bd2f6e84989bda8d67f32729, type: 2}
-  anim: {fileID: 248291285}
 --- !u!65 &264751332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28209,9 +28191,8 @@ MonoBehaviour:
   - {fileID: 714834766}
   - {fileID: 464177171}
   - {fileID: 799813029}
-  baricades:
-  - {fileID: 264751328}
-  - {fileID: 1872935427}
+  baricade1: {fileID: 264751328}
+  baricade2: {fileID: 1872935427}
   myMaterials:
   - {fileID: 2100000, guid: 316159e853e90944d8d1019f6397a06b, type: 2}
   - {fileID: 2100000, guid: 0ac905f1bd2f6e84989bda8d67f32729, type: 2}
@@ -52731,10 +52712,9 @@ GameObject:
   - component: {fileID: 1872935433}
   - component: {fileID: 1872935432}
   - component: {fileID: 1872935431}
-  - component: {fileID: 1872935430}
   - component: {fileID: 1872935429}
   m_Layer: 0
-  m_Name: BarrierTriggerCube (2)
+  m_Name: BarrierTriggerCube2
   m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52771,24 +52751,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1872935430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1872935427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ac32a19868be849ac1a7f4f05da22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBarrierClosed: 0
-  barrierLights: []
-  baricades: []
-  myMaterials:
-  - {fileID: 2100000, guid: b8a1761c51950cb44814bbdc87d85b81, type: 2}
-  - {fileID: 2100000, guid: 0ac905f1bd2f6e84989bda8d67f32729, type: 2}
-  anim: {fileID: 248291285}
 --- !u!65 &1872935431
 BoxCollider:
   m_ObjectHideFlags: 0

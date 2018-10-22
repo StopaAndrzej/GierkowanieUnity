@@ -8,21 +8,26 @@ public class BarrierTrigger : MonoBehaviour {
 
     public bool isBarrierClosed = false;
     public GameObject[] barrierLights;
-    public GameObject[] baricades;
+    public GameObject baricade1;
+    public GameObject baricade2;
     public Material[] myMaterials = new Material[5];
     public Animator anim;
 
 	// Use this for initialization
 	void Start () {
+
+        baricade1 = GameObject.Find("BarrierTriggerCube1");
+        baricade2 = GameObject.Find("BarrierTriggerCube2");
         anim = anim.GetComponent<Animator>();
         foreach(GameObject t in barrierLights)
         {
             t.GetComponent<Renderer>().material = myMaterials[0];
         }
-        foreach (GameObject x in baricades)
-        {
-            x.GetComponent<BoxCollider>().enabled = false;
-        }
+        //foreach (GameObject x in baricades)
+        //{
+            baricade1.GetComponent<BoxCollider>().enabled = false;
+            baricade2.GetComponent<BoxCollider>().enabled = false;
+        //}
 
     }
 
@@ -53,15 +58,18 @@ public class BarrierTrigger : MonoBehaviour {
     {
         if(isBarrierClosed)
         {
-            baricades[0].GetComponent<BoxCollider>().enabled = false;
-            baricades[1].GetComponent<BoxCollider>().enabled = false;
+            baricade1.GetComponent<BoxCollider>().enabled = false;
+            baricade2.GetComponent<BoxCollider>().enabled = false;
+            //baricades[1].GetComponent<BoxCollider>().enabled = false;
             isBarrierClosed = false;
             anim.enabled = true;
            
         } else
         {
-            baricades[0].GetComponent<BoxCollider>().enabled = true;
-            baricades[1].GetComponent<BoxCollider>().enabled = true;
+
+            baricade1.GetComponent<BoxCollider>().enabled = true;
+            baricade2.GetComponent<BoxCollider>().enabled = true;
+            //baricades[1].GetComponent<BoxCollider>().enabled = true;
             isBarrierClosed = true;
             anim.SetTrigger("CloseBarrier");
             
