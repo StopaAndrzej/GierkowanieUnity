@@ -4,46 +4,39 @@ using UnityEngine;
 
 public class StopTrain : MonoBehaviour {
 
-    private bool isActive = false;
     private float lastSpeed;
-    private bool isStoped=false;
-    
+    public bool isStoped = false;
+    public GameObject stopControlImported;
+    public GameObject thisGameObject;
 
-    public void OnMouseDown()
+
+     void Update()
     {
-        if (isActive)
+        if (isStoped == true && stopControlImported.GetComponent<TrainStopLights>().stopControl==false)
         {
-            isActive = false;
-            Debug.Log("Blocade is not active!");
-            GameObject go = GameObject.FindGameObjectWithTag("Train");
-            TrainMove tm = go.GetComponent<TrainMove>();
-            tm.speed = lastSpeed;
+            
+            //        //GameObject go = GameObject.FindGameObjectWithTag("Train");
+            //        //TrainMove tm = go.GetComponent<TrainMove>();
+            thisGameObject.GetComponent<TrainMove>().speed = lastSpeed;
+            //        //tm.speed = lastSpeed;
+            isStoped = false;
         }
 
-        else if (!isActive)
-        {
-            isActive = true;
-            Debug.Log("Blocade is active!");
-            
-        }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (isActive)
+        if (stopControlImported.GetComponent<TrainStopLights>().stopControl)
         {
             if (other.transform.tag == "Train")
             {
-               
+                Debug.Log("STOP");
                 lastSpeed = other.GetComponent<TrainMove>().speed;
                 other.GetComponent<TrainMove>().speed = 0;
-                Debug.Log("Train stoped!");
-                
+                thisGameObject = other.gameObject; 
+                isStoped = true;
             }
-           
         }
-       
- 
     }
 
 

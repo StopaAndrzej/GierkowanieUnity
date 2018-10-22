@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 10010516}
   - component: {fileID: 10010515}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3642,6 +3642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0445046c3eede55408bfa8762b162303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStoped: 0
+  stopControlImported: {fileID: 1237555155}
+  thisGameObject: {fileID: 0}
 --- !u!1 &137725921
 GameObject:
   m_ObjectHideFlags: 0
@@ -32540,6 +32543,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237555156}
+  - component: {fileID: 1237555158}
+  - component: {fileID: 1237555157}
   m_Layer: 0
   m_Name: Light Train
   m_TagString: Untagged
@@ -32567,6 +32572,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237555157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237555155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed61fb2e35cdf8b49ad400d5104a0fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopControl: 0
+  myMaterials:
+  - {fileID: 2100000, guid: 316159e853e90944d8d1019f6397a06b, type: 2}
+  - {fileID: 2100000, guid: 599a6bf1e4954454280682e01f7849e5, type: 2}
+  - {fileID: 2100000, guid: 6bddc263fb99126499d292b899687529, type: 2}
+  red: {fileID: 1533617793}
+  green: {fileID: 1644090271}
+--- !u!65 &1237555158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1237555155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7899742, y: 2.2629843, z: 2.6552734}
+  m_Center: {x: -0.3949871, y: -0.63149214, z: 0.42543793}
 --- !u!1 &1238264933
 GameObject:
   m_ObjectHideFlags: 0
@@ -36874,7 +36909,7 @@ GameObject:
   - component: {fileID: 1424109952}
   - component: {fileID: 1424109951}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38732,7 +38767,7 @@ GameObject:
   - component: {fileID: 1533617796}
   - component: {fileID: 1533617795}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39796,6 +39831,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1561960706}
+  - component: {fileID: 1561960708}
+  - component: {fileID: 1561960707}
   m_Layer: 0
   m_Name: Light Train (1)
   m_TagString: Untagged
@@ -39823,6 +39860,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1561960707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561960705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed61fb2e35cdf8b49ad400d5104a0fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopControl: 0
+  myMaterials:
+  - {fileID: 2100000, guid: 316159e853e90944d8d1019f6397a06b, type: 2}
+  - {fileID: 2100000, guid: 599a6bf1e4954454280682e01f7849e5, type: 2}
+  - {fileID: 2100000, guid: 6bddc263fb99126499d292b899687529, type: 2}
+  red: {fileID: 1424109949}
+  green: {fileID: 10010513}
+--- !u!65 &1561960708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561960705}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.8433685, z: 2.914978}
+  m_Center: {x: 0, y: -0.70512295, z: 0.619503}
 --- !u!1 &1564708188
 GameObject:
   m_ObjectHideFlags: 0
@@ -41817,7 +41884,7 @@ GameObject:
   - component: {fileID: 1644090274}
   - component: {fileID: 1644090273}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42561,6 +42628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0445046c3eede55408bfa8762b162303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStoped: 0
+  stopControlImported: {fileID: 1561960705}
+  thisGameObject: {fileID: 0}
 --- !u!23 &1679187579
 MeshRenderer:
   m_ObjectHideFlags: 0
