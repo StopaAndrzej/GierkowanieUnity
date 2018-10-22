@@ -10,7 +10,10 @@ public class StopCar : MonoBehaviour {
     public GameObject bar;
     public GameObject barRed;
     public GameObject barRedHolder;
+    public GameObject savedBarrier;
     public float scaleFactor = 0;
+    public bool insideBarierTrigger = false;
+
 	// Use this for initialization
 	void Start () {
         bar.GetComponent<Renderer>().enabled = false;
@@ -21,7 +24,14 @@ public class StopCar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(insideBarierTrigger==true && savedBarrier.GetComponent<BoxCollider>().enabled==false)
+        {
+            car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
+            timer = 0.0f;
+            bar.GetComponent<Renderer>().enabled = false;
+            barRed.GetComponent<Renderer>().enabled = false;
+            scaleFactor = 0.0f;
+        }
         
     }
 
@@ -35,6 +45,8 @@ public class StopCar : MonoBehaviour {
         {
             moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
             car.GetComponent<CarMovement>().moveSpeed = 0;
+            savedBarrier = other.gameObject;
+            insideBarierTrigger = true;
         }
             
         else if (other.transform.tag == "Train")
