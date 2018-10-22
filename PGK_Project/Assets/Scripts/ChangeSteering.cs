@@ -6,30 +6,19 @@ public class ChangeSteering : MonoBehaviour {
 
     public int angle;
     private bool isActive = false;
+    public GameObject changeSteeringImported;
 
 
-    public void OnMouseDown()
-    {
-        if (isActive)
-        {
-            isActive = false;
-            Debug.Log("Trigger is not active!");
-        }
-
-        else if (!isActive)
-        {
-            isActive = true;
-            Debug.Log("Trigger is active!");
-        }
-    }
+  
 
     public void OnTriggerEnter(Collider other)
     {
-        if (isActive)
+        if (changeSteeringImported.GetComponent<SteeringArrow>().changeSteering)
         {
             if (other.transform.tag == "Train")
             {
                 other.transform.localEulerAngles = new Vector3(0, angle, 0);
+                Debug.Log("Strzalka DZIALA!");
             }
         }
 
