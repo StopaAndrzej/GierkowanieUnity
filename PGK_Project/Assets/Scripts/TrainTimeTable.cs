@@ -31,16 +31,20 @@ public class TrainTimeTable : MonoBehaviour {
     {
         clockText = GetComponent<Text>();
         hour = System.DateTime.Now.Minute;
-        minute = System.DateTime.Now.Second+offset;
+        minute = System.DateTime.Now.Second;
 
         hour = hour % 24;
+
+        
+        hour += offset/ 60;
+        minute += offset % 60;
 
         if (minute >= 60)
         {
             hour++;
             minute = minute % 60;
         }
-    
+
         if (hour < 10)
         {
             display = "0";
