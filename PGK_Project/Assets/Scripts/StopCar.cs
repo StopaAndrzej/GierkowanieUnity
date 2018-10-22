@@ -9,6 +9,7 @@ public class StopCar : MonoBehaviour {
     public GameObject car;
     public GameObject bar;
     public GameObject barRed;
+    public GameObject barRedHolder;
     public float scaleFactor = 0;
 	// Use this for initialization
 	void Start () {
@@ -69,11 +70,11 @@ public class StopCar : MonoBehaviour {
                 bar.GetComponent<Renderer>().enabled = true;
                 barRed.GetComponent<Renderer>().enabled = true;
 
-                Transform t = barRed.transform;
-                barRed.transform.localScale = new Vector3(scaleFactor, 
+                Transform t = barRedHolder.transform;
+                barRedHolder.transform.localScale = new Vector3(scaleFactor, 
                                                          t.transform.localScale.y,
                                                          t.transform.localScale.z);
-                if(scaleFactor < 0.8)
+                if(scaleFactor < 16.7)
                 {
                     scaleFactor += timer * 0.0001f;
                 }
