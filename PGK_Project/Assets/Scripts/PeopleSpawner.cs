@@ -11,6 +11,7 @@ public class PeopleSpawner : MonoBehaviour {
     public GameObject crowdBar;
     public GameObject crowdBarRed;
     public GameObject crowdBarRedHolder;
+    public GameObject parent;
 
     public double crowdBarScaleFactor = 0;
     // Use this for initialization
@@ -23,7 +24,8 @@ public class PeopleSpawner : MonoBehaviour {
         timer += Time.deltaTime;
         if (timer > 1)
         {
-            Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+            Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
+            
             timer = 0.0f;
             peopleNumber++;
         }

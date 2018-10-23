@@ -10,13 +10,20 @@ public class TrainMove : MonoBehaviour
     public GameObject StopTrain;
     public bool onStation = false;
     public bool showOptions = false;
+    public bool loadPeople = false;
     public bool isClicked = false;
     public GameObject trainOption1;
+    public GameObject passangers;
+    public int numberToDestroy;
+    
 
     void Start()
     {
+        numberToDestroy = 0;
         trainOption1 = this.gameObject.transform.GetChild(0).gameObject;
         trainOption1.GetComponent<MeshRenderer>().enabled = false;
+        trainOption1.GetComponent<BoxCollider>().enabled = false;
+        passangers = GameObject.Find("FolderWithPassagers");
     }
     void Update()
     {
@@ -24,11 +31,23 @@ public class TrainMove : MonoBehaviour
         if (onStation == true && showOptions == true)
         {
             trainOption1.GetComponent<MeshRenderer>().enabled = true;
+            trainOption1.GetComponent<BoxCollider>().enabled = true;
+            if (passangers.transform.childCount > numberToDestroy)
+            {
+                loadPeople = true;
+                Destroy((passangers.transform.GetChild(numberToDestroy).gameObject));
+                numberToDestroy++;
+            }
+            numberToDestroy = 0;
+            
+
 
         }
         else
         {
             trainOption1.GetComponent<MeshRenderer>().enabled = false;
+            trainOption1.GetComponent<BoxCollider>().enabled = false;
+            loadPeople = false;
         }
     }
 

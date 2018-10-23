@@ -10,8 +10,10 @@ public class AgentMovement : MonoBehaviour {
     private string nameOfPath;
 
 
+
 	// Use this for initialization
 	void Start () {
+       
         var randomInt = Random.Range(0, 6);
         nameOfPath = "CapsuleDestination" + randomInt.ToString();
         home = GameObject.Find(nameOfPath).transform;
@@ -19,6 +21,7 @@ public class AgentMovement : MonoBehaviour {
         agent.SetDestination(home.position);
         agent.GetComponent<NavMeshAgent>().speed = 1 + Random.Range(-0.5f, 0.5f);
         transform.localScale = new Vector3(transform.localScale.x,transform.localScale.y+Random.Range(-0.02f, 0.02f),transform.localScale.z);
+   
 	}
 	
 	// Update is called once per frame
