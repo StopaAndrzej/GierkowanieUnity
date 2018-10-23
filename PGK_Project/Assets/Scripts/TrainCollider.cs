@@ -22,6 +22,7 @@ public class TrainCollider : MonoBehaviour
             }
             else
             {
+                GameObject.Find("GameOverText").GetComponent<Renderer>().enabled = true;
                 Debug.Log("GAME OVER");
                 Debug.Log("GAME OVER");
                 Debug.Log("GAME OVER");
@@ -38,7 +39,11 @@ public class TrainCollider : MonoBehaviour
     {
         if (other.transform.tag == "Train")
         {
-            thisTrain.speed = thisTrain.lastSpeed;
+            Invoke("restartTrain", 1);
         }
+    }
+    private void restartTrain()
+    {
+            thisTrain.speed = thisTrain.lastSpeed;
     }
 }
