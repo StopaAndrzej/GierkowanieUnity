@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-
+    public int trainCapacity;
     public float speed;
     public float lastSpeed;
     public GameObject StopTrain;
@@ -19,6 +19,7 @@ public class TrainMove : MonoBehaviour
 
     void Start()
     {
+        trainCapacity = 20;
         numberToDestroy = 0;
         trainOption1 = this.gameObject.transform.GetChild(0).gameObject;
         trainOption1.GetComponent<MeshRenderer>().enabled = false;
@@ -32,8 +33,9 @@ public class TrainMove : MonoBehaviour
         {
             trainOption1.GetComponent<MeshRenderer>().enabled = true;
             trainOption1.GetComponent<BoxCollider>().enabled = true;
-            if (passangers.transform.childCount > numberToDestroy)
+            if (passangers.transform.childCount > numberToDestroy && trainCapacity>0)
             {
+                trainCapacity--;
                 loadPeople = true;
                 Destroy((passangers.transform.GetChild(numberToDestroy).gameObject));
                 numberToDestroy++;
