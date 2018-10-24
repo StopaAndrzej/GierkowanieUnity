@@ -6,18 +6,28 @@ public class CargoMove : MonoBehaviour {
 
 
     public bool isMagazine=false;
-    public bool isClicked = false;
+    public bool isClicked;
     public bool showOptions = false;
 
     public int trainCapacity;
+    public int actualCapacity;
+    public int showMagazineCapacity;
+
+    public float timer;
     public float speed;
     public float lastSpeed;
+
     public GameObject cargoOption1;
+    public GameObject importedCapacity;
+
 
 
     // Use this for initialization
     void Start () {
+        isClicked = false;
+        timer = 0;
         trainCapacity = 1000;
+        actualCapacity = 0;
         speed = 150;
         cargoOption1 = this.gameObject.transform.GetChild(0).gameObject;
         cargoOption1.GetComponent<MeshRenderer>().enabled = false;
@@ -32,11 +42,23 @@ public class CargoMove : MonoBehaviour {
         {
             cargoOption1.GetComponent<MeshRenderer>().enabled = true;
             cargoOption1.GetComponent<BoxCollider>().enabled = true;
+            showMagazineCapacity = importedCapacity.GetComponent<Magaize>().capacity;
+            if (showMagazineCapacity > 0 && actualCapacity < trainCapacity)
+            {
+                timer += Time.deltaTime;
+                if (timer > 0.2f)
+                {
+                    timer = 0;
+                    showMagazineCapacity--;
+                    actualCapacity+=2;
+                }
+            }
         }
         else
         {
             cargoOption1.GetComponent<MeshRenderer>().enabled = false;
             cargoOption1.GetComponent<BoxCollider>().enabled = false;
+            
         }
     }
 
