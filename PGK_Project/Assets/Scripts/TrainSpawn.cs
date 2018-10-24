@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TrainSpawn : MonoBehaviour {
 
-    public GameObject go;
+    public GameObject[] go;
 
     public int thisHour;
     public int thisMinute;
@@ -34,7 +34,7 @@ public class TrainSpawn : MonoBehaviour {
             if(t.GetComponent<TrainTimeTable>().hour == thisHour && t.GetComponent<TrainTimeTable>().minute == thisMinute)
             {
                
-                    Instantiate(go, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+                    Instantiate(go[0], transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
                 t.GetComponent<TrainTimeTable>().hour = -1;
 
 
