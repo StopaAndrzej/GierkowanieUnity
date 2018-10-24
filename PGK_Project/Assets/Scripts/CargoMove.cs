@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CargoMove : MonoBehaviour {
+public class CargoMove : MonoBehaviour
+{
 
 
-    public bool isMagazine=false;
+    public bool isMagazine = false;
     public bool isClicked;
     public bool showOptions = false;
 
@@ -17,31 +18,39 @@ public class CargoMove : MonoBehaviour {
     public float speed;
     public float lastSpeed;
 
-    public GameObject cargoOption1;
+    public GameObject cargoBar;
+    public GameObject cargoBarRed;
+    public GameObject cargoBarHolder;
     public GameObject importedCapacity;
 
+    public float scaleFactor = 0;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         isClicked = false;
         timer = 0;
         trainCapacity = 1000;
         actualCapacity = 0;
         speed = 150;
-        cargoOption1 = this.gameObject.transform.GetChild(0).gameObject;
-        cargoOption1.GetComponent<MeshRenderer>().enabled = false;
-        cargoOption1.GetComponent<BoxCollider>().enabled = false;
+        //cargoBar = this.gameObject.transform.GetChild(0).gameObject;
+        cargoBar.GetComponent<MeshRenderer>().enabled = false;
+        cargoBar.GetComponent<BoxCollider>().enabled = false;
+        cargoBarRed.GetComponent<MeshRenderer>().enabled = false;
+        cargoBarRed.GetComponent<BoxCollider>().enabled = false;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         GetComponent<Rigidbody>().velocity = transform.forward * speed * Time.deltaTime;
-        if(isMagazine==true && showOptions==true)
+        if (isMagazine == true && showOptions == true)
         {
-            cargoOption1.GetComponent<MeshRenderer>().enabled = true;
-            cargoOption1.GetComponent<BoxCollider>().enabled = true;
+            //cargoBar.GetComponent<MeshRenderer>().enabled = true;
+            //cargoBarRed.GetComponent<MeshRenderer>().enabled = true;
+
             showMagazineCapacity = importedCapacity.GetComponent<Magaize>().capacity;
             if (showMagazineCapacity > 0 && actualCapacity < trainCapacity)
             {
@@ -50,15 +59,23 @@ public class CargoMove : MonoBehaviour {
                 {
                     timer = 0;
                     showMagazineCapacity--;
-                    actualCapacity+=2;
+                    actualCapacity += 2;
+                    scaleFactor = (float)(actualCapacity * 0.0097);
+                    cargoBar.GetComponent<Renderer>().enabled = true;
+                    cargoBarRed.GetComponent<Renderer>().enabled = true;
+                    Transform t = cargoBarHolder.transform;
+
+                    cargoBarHolder.transform.localScale = new Vector3(scaleFactor,
+                                                             t.transform.localScale.y,
+                                                             t.transform.localScale.z);
                 }
             }
         }
         else
         {
-            cargoOption1.GetComponent<MeshRenderer>().enabled = false;
-            cargoOption1.GetComponent<BoxCollider>().enabled = false;
-            
+            cargoBar.GetComponent<Renderer>().enabled = false;
+            cargoBarRed.GetComponent<Renderer>().enabled = false;
+
         }
     }
 

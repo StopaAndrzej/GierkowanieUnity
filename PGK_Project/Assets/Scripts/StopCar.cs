@@ -93,7 +93,6 @@ public class StopCar : MonoBehaviour {
                 }
                 if (scaleFactor > 4.1)
                 {                
-                    Debug.Log("WKURRRRRRRRRRRRRRRRRRRRW");
                     car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
                 }
             }
