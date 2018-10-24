@@ -28,9 +28,9 @@ public class StopCar : MonoBehaviour {
         {
             car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
             timer = 0.0f;
-            bar.GetComponent<Renderer>().enabled = false;
+            bar.GetComponent<Renderer>()  .enabled = false;
             barRed.GetComponent<Renderer>().enabled = false;
-            scaleFactor = 0.0f;
+            //scaleFactor = 0.0f;
         }
         
     }
@@ -83,12 +83,17 @@ public class StopCar : MonoBehaviour {
                 barRed.GetComponent<Renderer>().enabled = true;
 
                 Transform t = barRedHolder.transform;
-                barRedHolder.transform.localScale = new Vector3(scaleFactor, 
-                                                         t.transform.localScale.y,
-                                                         t.transform.localScale.z);
-                if(scaleFactor < 16.7)
+                if(scaleFactor < 4.1)
                 {
                     scaleFactor += timer * 0.0001f;
+                    barRedHolder.transform.localScale = new Vector3(scaleFactor, 
+                                                         t.transform.localScale.y,
+                                                         t.transform.localScale.z);
+                }
+                if (scaleFactor > 4.1)
+                {                
+                    Debug.Log("WKURRRRRRRRRRRRRRRRRRRRW");
+                    car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
                 }
             }
         }
