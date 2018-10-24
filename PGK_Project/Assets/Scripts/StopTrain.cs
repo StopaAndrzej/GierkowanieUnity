@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StopTrain : MonoBehaviour {
+public class StopTrain : MonoBehaviour
+{
 
     private float lastSpeed;
     public bool isStoped = false;
@@ -12,13 +13,18 @@ public class StopTrain : MonoBehaviour {
     public GameObject thisGameObject;
 
 
-     void Update()
+    void Update()
     {
-        if (isStoped == true && stopControlImported.GetComponent<TrainStopLights>().stopControl==false)
+        if (isStoped == true && stopControlImported.GetComponent<TrainStopLights>().stopControl == false)
         {
-            if(isTrain)
-                 thisGameObject.GetComponent<TrainMove>().speed = lastSpeed;
-            if(isCargo)
+            if (isTrain)
+            {
+                thisGameObject.GetComponent<TrainMove>().speed = lastSpeed;
+                TrainMove trainMove = thisGameObject.GetComponent<TrainMove>();
+                trainMove.bar.GetComponent<Renderer>().enabled = false;
+                trainMove.barRed.GetComponent<Renderer>().enabled = false;
+            }
+            if (isCargo)
                 thisGameObject.GetComponent<CargoMove>().speed = lastSpeed;
             isStoped = false;
         }
@@ -34,12 +40,12 @@ public class StopTrain : MonoBehaviour {
                 Debug.Log("STOP");
                 lastSpeed = other.GetComponent<TrainMove>().speed;
                 other.GetComponent<TrainMove>().speed = 0;
-                thisGameObject = other.gameObject; 
+                thisGameObject = other.gameObject;
                 isStoped = true;
                 isTrain = true;
                 isCargo = false;
             }
-            if(other.transform.tag == "TrainCargo")
+            if (other.transform.tag == "TrainCargo")
             {
                 lastSpeed = other.GetComponent<CargoMove>().speed;
                 other.GetComponent<CargoMove>().speed = 0;

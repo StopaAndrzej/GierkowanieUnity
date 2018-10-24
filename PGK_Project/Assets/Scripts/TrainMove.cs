@@ -20,6 +20,7 @@ public class TrainMove : MonoBehaviour
     public GameObject barRedHolder;
     public float scaleFactor = 0;
     public float timer = 0;
+    public GameObject peopleSpawner;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class TrainMove : MonoBehaviour
         trainOption1.GetComponent<MeshRenderer>().enabled = false;
         trainOption1.GetComponent<BoxCollider>().enabled = false;
         passangers = GameObject.Find("FolderWithPassagers");
+        peopleSpawner = GameObject.Find("PeronSpawner");
     }
     void Update()
     {
@@ -48,6 +50,7 @@ public class TrainMove : MonoBehaviour
                     trainCapacity--;
                     loadPeople = true;
                     Destroy((passangers.transform.GetChild(numberToDestroy).gameObject));
+                    peopleSpawner.GetComponent<PeopleSpawner>().peopleNumber--;
                     numberToDestroy++;
                 }
                 int pplInTrain = 20 - trainCapacity;
