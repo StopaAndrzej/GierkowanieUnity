@@ -12,6 +12,7 @@ public class TrainMove : MonoBehaviour
     public bool showOptions = false;
     public bool loadPeople = false;
     public bool isClicked = false;
+    public bool wrongPeron = false;
     public GameObject trainOption1;
     public GameObject passangers;
     public int numberToDestroy;
@@ -22,6 +23,9 @@ public class TrainMove : MonoBehaviour
     public float timer = 0;
     public GameObject peopleSpawner;
 
+    public int whichWay;
+    public int whichPeron;
+
     void Start()
     {
         bar.GetComponent<Renderer>().enabled = false;
@@ -31,7 +35,7 @@ public class TrainMove : MonoBehaviour
         trainOption1 = this.gameObject.transform.GetChild(0).gameObject;
         trainOption1.GetComponent<MeshRenderer>().enabled = false;
         trainOption1.GetComponent<BoxCollider>().enabled = false;
-        passangers = GameObject.Find("FolderWithPassagers");
+        //passangers = GameObject.Find("FolderWithPassagers");
         peopleSpawner = GameObject.Find("PeronSpawner");
     }
     void Update()
@@ -39,6 +43,7 @@ public class TrainMove : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * speed * Time.deltaTime;
         if (onStation == true && showOptions == true)
         {
+            
             trainOption1.GetComponent<MeshRenderer>().enabled = true;
             trainOption1.GetComponent<BoxCollider>().enabled = true;
             if (passangers.transform.childCount > numberToDestroy && trainCapacity > 0)
@@ -77,6 +82,24 @@ public class TrainMove : MonoBehaviour
     {
         if (other.transform.tag == "TrainStation")
         {
+            if (whichPeron == other.GetComponent<CheckPeronID>().peronID)
+            {
+                wrongPeron = false;
+            }
+
+            if (whichPeron != other.GetComponent<CheckPeronID>().peronID)
+            {
+                wrongPeron = true;
+            }
+
+            if (whichPeron == 1)
+            { 
+                passangers = GameObject.Find("FolderWithPassagers1");
+            }
+            if(whichPeron == 2)
+            {
+                passangers = GameObject.Find("FolderWithPassagers");
+            }
             onStation = true;
         }
     }
@@ -85,8 +108,16 @@ public class TrainMove : MonoBehaviour
     {
         if (!isClicked)
         {
-            showOptions = true;
-            isClicked = true;
+            if (wrongPeron == true)
+            {
+                Debug.Log("WRONG PERON!!!");
+            }
+            else
+            {
+                showOptions = true;
+                isClicked = true;
+            }
+            
         }
         else if (isClicked)
         {

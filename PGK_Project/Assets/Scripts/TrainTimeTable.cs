@@ -10,6 +10,8 @@ public class TrainTimeTable : MonoBehaviour {
     public int minute;
     private string display;
     public int offset;
+    public int whichWay;
+    public int whichPeron;
 
 
     // Use this for initialization
