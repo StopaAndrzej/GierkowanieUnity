@@ -51,8 +51,9 @@ public class StopCar : MonoBehaviour {
             
         else if (other.transform.tag == "Train")
         {
-            Debug.Log("GAME OVER");
-        }else if (other.transform.tag == "car")
+            GameObject.Find("MainCamera").GetComponent<CameraController>().gameOver();
+        }
+        else if (other.transform.tag == "car")
         {
             moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
             car.GetComponent<CarMovement>().moveSpeed = 0;

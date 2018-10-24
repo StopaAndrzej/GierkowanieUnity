@@ -10,8 +10,16 @@ public class CameraController : MonoBehaviour {
     public float scrollSpeed = 10f;
     public float minY = 5f;
     public float maxY = 20f;
+    public bool isGameOver = false;
+
+    private void Start()
+    {
+        isGameOver = false;
+    }
 
     void Update() {
+        if (!isGameOver)
+        {
 
         Vector3 pos = transform.position;
 
@@ -47,5 +55,11 @@ public class CameraController : MonoBehaviour {
 
 
         transform.position = pos;
+        }
 	}
+    public void gameOver()
+    {
+        isGameOver = true;
+        GameObject.Find("GameOverText").GetComponent<Renderer>().enabled = true;
+    }
 }

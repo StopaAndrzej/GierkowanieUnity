@@ -22,15 +22,7 @@ public class TrainCollider : MonoBehaviour
             }
             else
             {
-                GameObject.Find("GameOverText").GetComponent<Renderer>().enabled = true;
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-                Debug.Log("GAME OVER");
-
+                GameObject.Find("MainCamera").GetComponent<CameraController>().gameOver();
             }
         }
 
