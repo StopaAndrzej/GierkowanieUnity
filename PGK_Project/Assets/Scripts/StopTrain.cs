@@ -6,6 +6,8 @@ public class StopTrain : MonoBehaviour {
 
     private float lastSpeed;
     public bool isStoped = false;
+    public bool isTrain = false;
+    public bool isCargo = false;
     public GameObject stopControlImported;
     public GameObject thisGameObject;
 
@@ -14,11 +16,10 @@ public class StopTrain : MonoBehaviour {
     {
         if (isStoped == true && stopControlImported.GetComponent<TrainStopLights>().stopControl==false)
         {
-            
-            //        //GameObject go = GameObject.FindGameObjectWithTag("Train");
-            //        //TrainMove tm = go.GetComponent<TrainMove>();
-            thisGameObject.GetComponent<TrainMove>().speed = lastSpeed;
-            //        //tm.speed = lastSpeed;
+            if(isTrain)
+                 thisGameObject.GetComponent<TrainMove>().speed = lastSpeed;
+            if(isCargo)
+                thisGameObject.GetComponent<CargoMove>().speed = lastSpeed;
             isStoped = false;
         }
 
@@ -35,6 +36,17 @@ public class StopTrain : MonoBehaviour {
                 other.GetComponent<TrainMove>().speed = 0;
                 thisGameObject = other.gameObject; 
                 isStoped = true;
+                isTrain = true;
+                isCargo = false;
+            }
+            if(other.transform.tag == "TrainCargo")
+            {
+                lastSpeed = other.GetComponent<CargoMove>().speed;
+                other.GetComponent<CargoMove>().speed = 0;
+                thisGameObject = other.gameObject;
+                isStoped = true;
+                isCargo = true;
+                isTrain = false;
             }
         }
     }

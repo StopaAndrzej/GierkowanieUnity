@@ -12,6 +12,8 @@ TagManager:
   - car
   - crowd
   - TrainStation
+  - TrainCargo
+  - TrainExpress
   layers:
   - Default
   - TransparentFX

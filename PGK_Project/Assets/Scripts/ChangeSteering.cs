@@ -15,10 +15,9 @@ public class ChangeSteering : MonoBehaviour {
     {
         if (changeSteeringImported.GetComponent<SteeringArrow>().changeSteering)
         {
-            if (other.transform.tag == "Train")
+            if (other.transform.tag == "Train" || other.transform.tag == "TrainCargo" || other.transform.tag == "TrainExpress")
             {
                 other.transform.localEulerAngles = new Vector3(0, angle, 0);
-                Debug.Log("Strzalka DZIALA!");
             }
         }
 
