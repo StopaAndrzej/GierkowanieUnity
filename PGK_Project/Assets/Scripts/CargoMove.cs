@@ -9,10 +9,11 @@ public class CargoMove : MonoBehaviour
     public bool isMagazine = false;
     public bool isClicked;
     public bool showOptions = false;
+    public bool isFull;
 
     public int trainCapacity;
     public int actualCapacity;
-    public int showMagazineCapacity;
+    public int showMagazineCapacity=100000;
 
     public float timer;
     public float speed;
@@ -21,14 +22,18 @@ public class CargoMove : MonoBehaviour
     public GameObject cargoBar;
     public GameObject cargoBarRed;
     public GameObject cargoBarHolder;
-    public GameObject importedCapacity;
+   
 
     public float scaleFactor = 0;
+
+    public int whichWay;
+    public int whichPeron;
 
 
     // Use this for initialization
     void Start()
     {
+        isFull = false;
         isClicked = false;
         timer = 0;
         trainCapacity = 1000;
@@ -51,7 +56,7 @@ public class CargoMove : MonoBehaviour
             //cargoBar.GetComponent<MeshRenderer>().enabled = true;
             //cargoBarRed.GetComponent<MeshRenderer>().enabled = true;
 
-            showMagazineCapacity = importedCapacity.GetComponent<Magaize>().capacity;
+            
             if (showMagazineCapacity > 0 && actualCapacity < trainCapacity)
             {
                 timer += Time.deltaTime;
@@ -68,6 +73,8 @@ public class CargoMove : MonoBehaviour
                     cargoBarHolder.transform.localScale = new Vector3(scaleFactor,
                                                              t.transform.localScale.y,
                                                              t.transform.localScale.z);
+                    if (actualCapacity>500)
+                        isFull = true;
                 }
             }
         }
