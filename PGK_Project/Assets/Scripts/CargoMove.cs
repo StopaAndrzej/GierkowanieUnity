@@ -13,7 +13,7 @@ public class CargoMove : MonoBehaviour
 
     public int trainCapacity;
     public int actualCapacity;
-    public int showMagazineCapacity=100000;
+    public int showMagazineCapacity;
 
     public float timer;
     public float speed;
@@ -36,6 +36,7 @@ public class CargoMove : MonoBehaviour
         isFull = false;
         isClicked = false;
         timer = 0;
+        showMagazineCapacity = 100000;
         trainCapacity = 1000;
         actualCapacity = 0;
         speed = 150;
@@ -63,8 +64,8 @@ public class CargoMove : MonoBehaviour
                 if (timer > 0.2f)
                 {
                     timer = 0;
-                    showMagazineCapacity--;
-                    actualCapacity += 2;
+                    showMagazineCapacity-=4;
+                    actualCapacity += 4;
                     scaleFactor = (float)(actualCapacity * 0.0097);
                     cargoBar.GetComponent<Renderer>().enabled = true;
                     cargoBarRed.GetComponent<Renderer>().enabled = true;

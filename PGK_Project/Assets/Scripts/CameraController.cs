@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public float panSpeed = 20f;
+    public float turbo;
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
     public float scrollSpeed = 10f;
@@ -14,6 +15,7 @@ public class CameraController : MonoBehaviour {
 
     private void Start()
     {
+        turbo = 1.0f;
         isGameOver = false;
     }
 
@@ -22,26 +24,34 @@ public class CameraController : MonoBehaviour {
         {
 
         Vector3 pos = transform.position;
+            
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                turbo = 3.0f;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                turbo = 1.0f;
+            }
+            if (Input.GetKey("w") ) 
+            {
+                pos.x += panSpeed * Time.deltaTime*turbo;
+            }
 
-        if (Input.GetKey("w") ) 
-        {
-            pos.x += panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey("s") )
+            {
+                pos.x -= panSpeed * Time.deltaTime * turbo;
+            }
 
-        if (Input.GetKey("s") )
-        {
-            pos.x -= panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey("d") )
+            {
+                pos.z -= panSpeed * Time.deltaTime * turbo;
+            }
 
-        if (Input.GetKey("d") )
-        {
-            pos.z -= panSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey("a") )
-        {
-            pos.z += panSpeed * Time.deltaTime;
-        }
+            if (Input.GetKey("a") )
+            {
+                pos.z += panSpeed * Time.deltaTime * turbo;
+            }
 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");

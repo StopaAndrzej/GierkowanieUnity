@@ -11,7 +11,7 @@ public class TrainCollider : MonoBehaviour
     {
         Debug.Log("Train collided with " + other);
 
-        if (other.transform.tag == "Train")
+        if (other.transform.tag == "Train" )
         {
             TrainMove otherTrain = other.GetComponent<TrainMove>();
             if (otherTrain.speed == 0)
@@ -24,6 +24,12 @@ public class TrainCollider : MonoBehaviour
             {
                 GameObject.Find("MainCamera").GetComponent<CameraController>().gameOver();
             }
+        }
+
+        if(other.transform.tag == "TrainCargo")
+        {
+            CargoMove otherTrain = other.GetComponent<CargoMove>();
+            GameObject.Find("MainCamera").GetComponent<CameraController>().gameOver();
         }
 
     }
