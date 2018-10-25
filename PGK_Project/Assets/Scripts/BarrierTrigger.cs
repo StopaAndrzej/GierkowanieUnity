@@ -7,6 +7,7 @@ public class BarrierTrigger : MonoBehaviour {
 
 
     public bool isBarrierClosed = false;
+    public double clickDelay = 0;
     public GameObject[] barrierLights;
     public GameObject baricade1;
     public GameObject baricade2;
@@ -32,47 +33,50 @@ public class BarrierTrigger : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
- 
+    void FixedUpdate () {
+        clickDelay += Time.deltaTime;
 
-        if (isBarrierClosed == true)
+        if (isBarrierClosed == true && clickDelay >= 1.0f)
         {
             foreach (GameObject t in barrierLights)
             {
                 t.GetComponent<Renderer>().material = myMaterials[1];
             }
-
-            
             
         }
-        else if (isBarrierClosed == false)
+        else if (isBarrierClosed == false && clickDelay >= 1.0f)
         {
             foreach (GameObject t in barrierLights)
             {
                 t.GetComponent<Renderer>().material = myMaterials[0];
             }
+           
         }
 	}
 
     private void OnMouseDown()
     {
-        if(isBarrierClosed)
+        if(isBarrierClosed && clickDelay >= 5.0f)
         {
+            clickDelay = 0;
             baricade1.GetComponent<BoxCollider>().enabled = false;
             baricade2.GetComponent<BoxCollider>().enabled = false;
             //baricades[1].GetComponent<BoxCollider>().enabled = false;
             isBarrierClosed = false;
             anim.enabled = true;
            
-        } else
-        {
 
+
+        } else if(!isBarrierClosed && clickDelay >= 5.0f)
+        {
+            clickDelay = 0;
             baricade1.GetComponent<BoxCollider>().enabled = true;
             baricade2.GetComponent<BoxCollider>().enabled = true;
             //baricades[1].GetComponent<BoxCollider>().enabled = true;
             isBarrierClosed = true;
             anim.SetTrigger("CloseBarrier");
             
+
         }
     }
 
