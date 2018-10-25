@@ -37,5 +37,9 @@ public class DestroyTrain : MonoBehaviour {
             }
             Destroy(other.gameObject);
         }
+
+        if (other.transform.tag == "TrainExpress") {
+            Destroy(other.gameObject);
+        }
     }
 }
