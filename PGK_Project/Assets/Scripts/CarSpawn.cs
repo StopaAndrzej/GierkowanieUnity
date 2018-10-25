@@ -6,9 +6,11 @@ public class CarSpawn : MonoBehaviour {
 
     public Transform pos;
     public GameObject go;
+    public GameObject currentSpawnedCar;
     public GameObject parent;
     double timer = 0.0;
     int period=1;
+    public int id;
  
 
 	// Use this for initialization
@@ -28,7 +30,8 @@ public class CarSpawn : MonoBehaviour {
     }
     void spawnCar()
     {
-        Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
+        currentSpawnedCar = Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
+        currentSpawnedCar.GetComponent<CarMovement>().whichSpawn = id;
         Debug.Log("CAR SPAWN");
         Debug.Log("CAR SPAWN");
         Debug.Log("CAR SPAWN");

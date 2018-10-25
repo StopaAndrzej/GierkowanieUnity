@@ -15,23 +15,38 @@ public class CarMovement : MonoBehaviour {
 
     private List<Transform> nodes;
 	private int currentNode = 0;
+    public int whichSpawn;
 
 	void Start () {
+        
         moveSpeed = 0.2f;
         int r = Random.Range(1, 3);
+       
 
         path[0] = GameObject.Find("CarPaths").transform;
         path[1] = GameObject.Find("CarPaths2").transform;
+        path[2] = GameObject.Find("CarPaths3").transform;
+        path[3] = GameObject.Find("CarPaths4").transform;
 
-        
-        if (r == 1)
+
+
+        if (r == 1 && whichSpawn==1)
         {
             currentPath = path[0];
         }
-        else
+        else if(r == 2 && whichSpawn == 1)
         {
             currentPath = path[1];
         }
+        else if (r == 1 && whichSpawn == 2)
+        {
+            currentPath = path[2];
+        }
+        else if (r == 2 && whichSpawn == 2)
+        {
+            currentPath = path[3];
+        }
+
         Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 

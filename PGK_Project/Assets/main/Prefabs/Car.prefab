@@ -415,11 +415,14 @@ MonoBehaviour:
   path:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPath: {fileID: 0}
   maxSteerAngle: 40
   moveSpeed: 0.2
   sensorLenght: 0.5
   frontSensorPos: 0.8
+  whichSpawn: 0
 --- !u!114 &114499628055313618
 MonoBehaviour:
   m_ObjectHideFlags: 1
