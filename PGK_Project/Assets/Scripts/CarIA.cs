@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarIA : MonoBehaviour {
 
 	public Color lineColor;
-	private List<Transform> nodes = new List<Transform>();
+	public List<Transform> nodes = new List<Transform>();
 
 
 	void OnDrawGizmos()

@@ -6,8 +6,9 @@ public class CarMovement : MonoBehaviour {
 
 
 
-	public Transform path;
-	public float maxSteerAngle = 40f;
+	public Transform[] path;
+    public Transform currentPath;
+    public float maxSteerAngle = 40f;
 	public float moveSpeed = 0.2f;
     public float sensorLenght = 0.5f;
     public float frontSensorPos = 0.8f;
@@ -17,12 +18,21 @@ public class CarMovement : MonoBehaviour {
 
 	void Start () {
         moveSpeed = 0.2f;
-        path = GameObject.FindGameObjectWithTag("carPath").transform;
-		Transform[] pathTransforms = path.GetComponentsInChildren<Transform> ();
+        int r = Random.Range(1, 3);
+
+        if (r == 1)
+        {
+            currentPath = path[0];
+        }
+        else
+        {
+            currentPath = path[1];
+        }
+        Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 
 		for (int i = 0; i < pathTransforms.Length; i++) {
-			if (pathTransforms [i] != path.transform) {
+			if (pathTransforms [i] != currentPath.transform) {
 				nodes.Add (pathTransforms [i]);
 			}
 		}
