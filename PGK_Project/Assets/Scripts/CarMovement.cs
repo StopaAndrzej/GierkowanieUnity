@@ -20,6 +20,10 @@ public class CarMovement : MonoBehaviour {
         moveSpeed = 0.2f;
         int r = Random.Range(1, 3);
 
+        path[0] = GameObject.Find("CarPaths").transform;
+        path[1] = GameObject.Find("CarPaths2").transform;
+
+        
         if (r == 1)
         {
             currentPath = path[0];

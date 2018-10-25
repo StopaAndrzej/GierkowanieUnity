@@ -412,7 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41474c5017bee0845906e788edfba7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: {fileID: 0}
+  path:
+  - {fileID: 0}
+  - {fileID: 0}
+  currentPath: {fileID: 0}
   maxSteerAngle: 40
   moveSpeed: 0.2
   sensorLenght: 0.5
@@ -434,4 +437,6 @@ MonoBehaviour:
   bar: {fileID: 1278416480177676}
   barRed: {fileID: 1282488824402644}
   barRedHolder: {fileID: 1119470396243758}
+  savedBarrier: {fileID: 0}
   scaleFactor: 0
+  insideBarierTrigger: 0

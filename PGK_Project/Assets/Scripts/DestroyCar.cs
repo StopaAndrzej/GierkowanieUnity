@@ -8,7 +8,7 @@ public class DestroyCar : MonoBehaviour {
     {
         if (other.transform.tag == "car")
         {
-            Destroy(other.transform.parent.gameObject);
+           // Destroy(other.transform.parent.gameObject);
         }
     }
 }
