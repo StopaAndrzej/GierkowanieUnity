@@ -33,22 +33,22 @@ public class CameraController : MonoBehaviour {
             {
                 turbo = 1.0f;
             }
-            if (Input.GetKey("w") ) 
+            if (Input.GetKey("d") ) 
             {
                 pos.x += panSpeed * Time.deltaTime*turbo;
             }
 
-            if (Input.GetKey("s") )
+            if (Input.GetKey("a") )
             {
                 pos.x -= panSpeed * Time.deltaTime * turbo;
             }
 
-            if (Input.GetKey("d") )
+            if (Input.GetKey("s") )
             {
                 pos.z -= panSpeed * Time.deltaTime * turbo;
             }
 
-            if (Input.GetKey("a") )
+            if (Input.GetKey("w") )
             {
                 pos.z += panSpeed * Time.deltaTime * turbo;
             }
