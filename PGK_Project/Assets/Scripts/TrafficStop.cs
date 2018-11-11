@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrafficStop : MonoBehaviour {
 
-    public GameObject trafficLights;
+    public TrafficLight trafficLights;
     public float lastSpeed = 0;
     public bool isStopped = false;
 
@@ -17,23 +17,23 @@ public class TrafficStop : MonoBehaviour {
 	void Update () {
 		
 	}
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!trafficLights.GetComponent<TrafficLight>().isGreen)
-        {
-            if (other.transform.tag == "car")
-            {
-                Debug.Log("STOP CAR");
-                Debug.Log("STOP CAR");
-                Debug.Log("STOP CAR");
-                Debug.Log("STOP CAR");
-                Debug.Log("STOP CAR");
-                Debug.Log("STOP CAR");
-                lastSpeed = other.GetComponent<CarMovement>().moveSpeed;
-                other.GetComponent<CarMovement>().moveSpeed = 0;
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!trafficLights.isGreen)
+    //    {
+    //        if (other.transform.tag == "car")
+    //        {
+    //            Debug.Log("STOP CAR");
+    //            Debug.Log("STOP CAR");
+    //            Debug.Log("STOP CAR");
+    //            Debug.Log("STOP CAR");
+    //            Debug.Log("STOP CAR");
+    //            Debug.Log("STOP CAR");
+    //            lastSpeed = other.GetComponent<CarMovement>().moveSpeed;
+    //            other.GetComponent<CarMovement>().moveSpeed = 0;
 
-                isStopped = true;
-            }
-        }
-    }
+    //            isStopped = true;
+    //        }
+    //    }
+    //}
 }
