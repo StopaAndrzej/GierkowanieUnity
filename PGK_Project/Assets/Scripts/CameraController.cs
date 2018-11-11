@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour {
     public float minY = 5f;
     public float maxY = 20f;
     public bool isGameOver = false;
+    public GameObject gameOverText;
 
     private void Start()
     {
@@ -70,6 +71,7 @@ public class CameraController : MonoBehaviour {
     public void gameOver()
     {
         isGameOver = true;
-        GameObject.Find("GameOverText").GetComponent<Renderer>().enabled = true;
+        gameOverText.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

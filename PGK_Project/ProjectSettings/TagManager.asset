@@ -15,6 +15,7 @@ TagManager:
   - TrainCargo
   - TrainExpress
   - CargoStation
+  - TrafficLightStop
   layers:
   - Default
   - TransparentFX
