@@ -37,36 +37,32 @@ public class Clock : MonoBehaviour {
 
     //generate timetables
     public List<int> timetables;
-    public int timetableTEST;
-    public bool spawnTrainDelay;
+    private bool spawnTrainDelay;
     private int spawnTrainDelaySavedTime;
 
-    private int i = 0;
+    private int avaivableTrains;
+    private int generateListinTime;
+
 
     void Start()
     {
         timeBooster = 1;
         playTime = 300f;
         endLevelTime = 1260;
-
-        timetables.Add(305);
-        timetables.Add(306);
-        timetables.Add(310);
-
         spawnTrainDelay = false;
-        
-        
+        generateListinTime = 0;
+
+
     }
-
-
-    //Random.Range(-0.5f, 0.5f)
 
     void Update()
     {
         UpdateTime();
+        TimetablesGenerator();
         SpawnTrain();
         FinishLevel();
     }
+
 
     private void UpdateTime()
     {
@@ -87,7 +83,7 @@ public class Clock : MonoBehaviour {
             timeBooster = 1;
     }
 
-     private void SpawnTrain()
+    private void SpawnTrain()
     {
         foreach(int time in timetables)
         {
@@ -111,6 +107,115 @@ public class Clock : MonoBehaviour {
         //    //t.GetComponent<TrainTimeTable>().hour = -1;
     }
 
+    private void TimetablesGenerator()
+    {
+        if (intPlayTime >= 300 && intPlayTime < 420)//5->7
+        {
+            generateListinTime++;
+            if (generateListinTime == 1)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(1, 2));
+                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(300, 420));
+                }
+            }
+        }
+        else if (intPlayTime >= 420 && intPlayTime < 510)//7->8.30
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(2, 4));
+                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(420, 510));
+                }
+            }
+        }
+        else if (intPlayTime >= 510 && intPlayTime < 600)//8.30->10
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(4, 6));
+                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(510, 600));
+                }
+            }
+
+        }
+        else if (intPlayTime >= 600 && intPlayTime < 720)//10->12
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(1, 3));
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(600, 720));
+                }
+            }
+
+        }
+        else if (intPlayTime >= 720 && intPlayTime < 840)//12->14
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(3, 5));
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(720, 840));
+                }
+            }
+
+        }
+        else if (intPlayTime >= 840 && intPlayTime < 960)//14->16
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(6, 8));
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(840, 960));
+                }
+            }
+
+        }
+        else if (intPlayTime >= 960 && intPlayTime < 1080)//16->18
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(6, 10));
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(960, 1080));
+                }
+            }
+
+        }
+        else if (intPlayTime >= 1080 && intPlayTime < 1200)//20->22
+        {
+            generateListinTime++;
+            if (generateListinTime == 2)
+            {
+                avaivableTrains = (int)(UnityEngine.Random.Range(4, 6));
+                for (int i = 0; i <= avaivableTrains; i++)
+                {
+                    timetables.Add(UnityEngine.Random.Range(1080, 1200));
+                }
+            }
+
+        }
+    }
+
     private void FinishLevel()
     {
         if(intPlayTime>=endLevelTime)
@@ -118,4 +223,6 @@ public class Clock : MonoBehaviour {
             Debug.Log("LevelComplited!");
         }
     }
+
+    
 }
