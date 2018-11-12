@@ -16,35 +16,61 @@ public class Clock : MonoBehaviour {
 
 
 
-    public int timeBooster;
-    public float playTime=0f;
+    private int timeBooster;
+    private float playTime=0f;
     public int intPlayTime;
 
     //time parameters
-    public int seconds;
-    public int minutes;
-    public int hours;
-    public int days;
+    private int seconds;
+    private int minutes;
+    private int hours;
+    private int days;
+    private int endLevelTime;
+
+    //spawner
+    public GameObject trainSpawner;
+    public List<GameObject> trainType;
+    public List<GameObject> trains;
 
 
+
+
+    //generate timetables
+    public List<int> timetables;
+    public int timetableTEST;
+    public bool spawnTrainDelay;
+    private int spawnTrainDelaySavedTime;
+
+    private int i = 0;
 
     void Start()
     {
         timeBooster = 1;
         playTime = 300f;
+        endLevelTime = 1260;
+
+        timetables.Add(305);
+        timetables.Add(306);
+        timetables.Add(310);
+
+        spawnTrainDelay = false;
+        
+        
     }
 
 
+    //Random.Range(-0.5f, 0.5f)
 
     void Update()
     {
-        updateTime();
+        UpdateTime();
+        SpawnTrain();
+        FinishLevel();
     }
 
-    private void updateTime()
+    private void UpdateTime()
     {
         playTime += Time.deltaTime * timeBooster;
-
         intPlayTime = (int)playTime;
         minutes = intPlayTime % 60;
         hours = (intPlayTime / 60) % 24;
@@ -60,5 +86,36 @@ public class Clock : MonoBehaviour {
         else
             timeBooster = 1;
     }
-  
+
+     private void SpawnTrain()
+    {
+        foreach(int time in timetables)
+        {
+            if (intPlayTime == time && !spawnTrainDelay)
+            {
+                Debug.Log("TrainSpawned!");
+                GameObject actualSpawnedTrain = Instantiate(trainType[0], trainSpawner.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+                trains.Add(actualSpawnedTrain);
+                spawnTrainDelay = true;
+                spawnTrainDelaySavedTime = intPlayTime;
+            }
+
+            if (spawnTrainDelay == true && spawnTrainDelaySavedTime != intPlayTime)
+            {
+                spawnTrainDelay = false;
+            }
+        }
+
+        //    //actualSpawnedObject.GetComponent<TrainMove>().whichWay = t.GetComponent<TrainTimeTable>().whichWay;
+        //    //actualSpawnedObject.GetComponent<TrainMove>().whichPeron = t.GetComponent<TrainTimeTable>().whichPeron;
+        //    //t.GetComponent<TrainTimeTable>().hour = -1;
+    }
+
+    private void FinishLevel()
+    {
+        if(intPlayTime>=endLevelTime)
+        {
+            Debug.Log("LevelComplited!");
+        }
+    }
 }

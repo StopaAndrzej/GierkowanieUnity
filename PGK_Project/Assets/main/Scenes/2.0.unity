@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 115258071}
   - component: {fileID: 115258070}
   - component: {fileID: 115258069}
-  - component: {fileID: 115258072}
   m_Layer: 0
   m_Name: TrainSpawner
   m_TagString: Untagged
@@ -199,25 +198,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115258067}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &115258072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115258067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88ec6ad1f8769b4a822cf607d4c5e42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trains:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  thisHour: 0
-  thisMinute: 0
-  timeTables: []
-  actualSpawnedObject: {fileID: 0}
 --- !u!1 &132118281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1819060821340134, guid: 37870929b92502b4ba1bd5b9af836445,
@@ -301,6 +281,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1266347024}
     m_Modifications:
+    - target: {fileID: 114193359987793172, guid: 37870929b92502b4ba1bd5b9af836445,
+        type: 2}
+      propertyPath: trainType.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4483707964237210, guid: 37870929b92502b4ba1bd5b9af836445, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.85
@@ -351,6 +336,29 @@ Prefab:
       propertyPath: hoursHand
       value: 
       objectReference: {fileID: 410198946}
+    - target: {fileID: 114193359987793172, guid: 37870929b92502b4ba1bd5b9af836445,
+        type: 2}
+      propertyPath: trainType.Array.data[0]
+      value: 
+      objectReference: {fileID: 1628165840804284, guid: 7b3ea8bfa9913664fa2d9e9222fd0d1d,
+        type: 2}
+    - target: {fileID: 114193359987793172, guid: 37870929b92502b4ba1bd5b9af836445,
+        type: 2}
+      propertyPath: trainType.Array.data[1]
+      value: 
+      objectReference: {fileID: 1907799416078882, guid: 93297c43886827c48bb6cab49ba0a3f8,
+        type: 2}
+    - target: {fileID: 114193359987793172, guid: 37870929b92502b4ba1bd5b9af836445,
+        type: 2}
+      propertyPath: trainType.Array.data[2]
+      value: 
+      objectReference: {fileID: 1518043594392458, guid: 549467e4aa1912c48b0f22820b0dbbb0,
+        type: 2}
+    - target: {fileID: 114193359987793172, guid: 37870929b92502b4ba1bd5b9af836445,
+        type: 2}
+      propertyPath: trainSpawner
+      value: 
+      objectReference: {fileID: 115258067}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37870929b92502b4ba1bd5b9af836445, type: 2}
   m_IsPrefabAsset: 0
@@ -452,6 +460,7 @@ MonoBehaviour:
   minY: 5
   maxY: 20
   isGameOver: 0
+  gameOverText: {fileID: 0}
 --- !u!1 &1960055665
 GameObject:
   m_ObjectHideFlags: 0
