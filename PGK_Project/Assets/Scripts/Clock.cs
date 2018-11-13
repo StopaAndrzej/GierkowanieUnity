@@ -72,10 +72,10 @@ public class Clock : MonoBehaviour {
         hours = (intPlayTime / 60) % 24;
 
         float minutesDegree = (intPlayTime / 60f) * 360f;
-        minutesHand.transform.localRotation = Quaternion.Euler(new Vector3(0, minutesDegree, 0));
+        minutesHand.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -minutesDegree));
 
         float hoursDegree = (intPlayTime / 720f) * 360f;
-        hoursHand.transform.localRotation = Quaternion.Euler(new Vector3(0, hoursDegree, 0));
+        hoursHand.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -hoursDegree));
 
         if (Input.GetKey("space"))
             timeBooster = 5;
@@ -94,6 +94,7 @@ public class Clock : MonoBehaviour {
                 trains.Add(actualSpawnedTrain);
                 spawnTrainDelay = true;
                 spawnTrainDelaySavedTime = intPlayTime;
+                ShowTimeTablesGUI();
             }
 
             if (spawnTrainDelay == true && spawnTrainDelaySavedTime != intPlayTime)
@@ -216,6 +217,11 @@ public class Clock : MonoBehaviour {
         }
     }
 
+    private void ShowTimeTablesGUI()
+    {
+        GUI.Box(new Rect(0, 0, 80, 20), "TEXT");
+    }
+
     private void FinishLevel()
     {
         if(intPlayTime>=endLevelTime)
@@ -224,5 +230,6 @@ public class Clock : MonoBehaviour {
         }
     }
 
+   
     
 }
