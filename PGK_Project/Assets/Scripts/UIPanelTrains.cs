@@ -13,17 +13,19 @@ public class UIPanelTrains : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
+    public void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) && !isExtended )
+        if (!isExtended)
         {
             anim.Play("ExtendTrainLabel");
             isExtended = true;
         }
-        if(Input.GetMouseButtonDown(0) && isExtended)
+        if (isExtended)
         {
             anim.Play("FoldTrainLabel");
-            isExtended=false;
+            isExtended = false;
         }
     }
+    
+    
 }

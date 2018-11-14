@@ -31,34 +31,47 @@ public class Clock : MonoBehaviour {
     public GameObject trainSpawner;
     public List<GameObject> trainType;
     public List<GameObject> trains;
-
+    
 
 
 
     //generate timetables
     public List<int> timetables;
+    public List<int> typeOfTrain;
     private bool spawnTrainDelay;
     private int spawnTrainDelaySavedTime;
 
     private int avaivableTrains;
-    private int generateListinTime;
+    private int cargoLimitControll;
+
+    //trains banner
+    public List<Sprite> icons;
+    public GameObject bannerSlots;
+    public List<SpriteRenderer> sprites;
+
+    //trains banner timetables
 
 
     void Start()
     {
+        foreach (Transform child in bannerSlots.transform)
+        {
+            sprites.Add(child.GetComponent<SpriteRenderer>());
+        }
+
+
         timeBooster = 1;
         playTime = 300f;
         endLevelTime = 1260;
         spawnTrainDelay = false;
-        generateListinTime = 0;
-
-
+        TrainTimeTablesGenerator();
+        TrainTypesGenerator();
     }
 
     void Update()
     {
         UpdateTime();
-        TimetablesGenerator();
+        DisplayTrainTimeTable();
         SpawnTrain();
         FinishLevel();
     }
@@ -94,7 +107,7 @@ public class Clock : MonoBehaviour {
                 trains.Add(actualSpawnedTrain);
                 spawnTrainDelay = true;
                 spawnTrainDelaySavedTime = intPlayTime;
-                ShowTimeTablesGUI();
+                
             }
 
             if (spawnTrainDelay == true && spawnTrainDelaySavedTime != intPlayTime)
@@ -108,119 +121,52 @@ public class Clock : MonoBehaviour {
         //    //t.GetComponent<TrainTimeTable>().hour = -1;
     }
 
-    private void TimetablesGenerator()
+    private void TrainTimeTablesGenerator()
     {
-        if (intPlayTime >= 300 && intPlayTime < 420)//5->7
+        //5->7
+        avaivableTrains = (int)(UnityEngine.Random.Range(3, 5));
+        for(int i=0; i<avaivableTrains; i++)
         {
-            generateListinTime++;
-            if (generateListinTime == 1)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(1, 2));
-                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(300, 420));
-                }
-            }
-        }
-        else if (intPlayTime >= 420 && intPlayTime < 510)//7->8.30
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(2, 4));
-                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(420, 510));
-                }
-            }
-        }
-        else if (intPlayTime >= 510 && intPlayTime < 600)//8.30->10
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(4, 6));
-                Debug.Log(generateListinTime + " ile: " + avaivableTrains);
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(510, 600));
-                }
-            }
+            timetables.Add(UnityEngine.Random.Range(330, 420));
 
         }
-        else if (intPlayTime >= 600 && intPlayTime < 720)//10->12
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(1, 3));
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(600, 720));
-                }
-            }
 
+
+        //7->9.30
+        avaivableTrains = (int)(UnityEngine.Random.Range(7, 9));
+        for (int i = 0; i < avaivableTrains; i++)
+        {
+            timetables.Add(UnityEngine.Random.Range(420, 570));
+ 
         }
-        else if (intPlayTime >= 720 && intPlayTime < 840)//12->14
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(3, 5));
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(720, 840));
-                }
-            }
 
-        }
-        else if (intPlayTime >= 840 && intPlayTime < 960)//14->16
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
-            {
-                avaivableTrains = (int)(UnityEngine.Random.Range(6, 8));
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(840, 960));
-                }
-            }
+        timetables.Sort();
+    }
 
-        }
-        else if (intPlayTime >= 960 && intPlayTime < 1080)//16->18
+    private void TrainTypesGenerator()
+    {
+        foreach(int i in timetables)
         {
-            generateListinTime++;
-            if (generateListinTime == 2)
+            if (i < 420)
             {
-                avaivableTrains = (int)(UnityEngine.Random.Range(6, 10));
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(960, 1080));
-                }
+                typeOfTrain.Add(0); //5->7 tylko osobowe
             }
-
-        }
-        else if (intPlayTime >= 1080 && intPlayTime < 1200)//20->22
-        {
-            generateListinTime++;
-            if (generateListinTime == 2)
+            else
             {
-                avaivableTrains = (int)(UnityEngine.Random.Range(4, 6));
-                for (int i = 0; i <= avaivableTrains; i++)
-                {
-                    timetables.Add(UnityEngine.Random.Range(1080, 1200));
-                }
+                typeOfTrain.Add(UnityEngine.Random.Range(0, 2)); //po 7 moga byc towarowe
             }
-
+            
         }
     }
 
-    private void ShowTimeTablesGUI()
+    private void DisplayTrainTimeTable()
     {
-        GUI.Box(new Rect(0, 0, 80, 20), "TEXT");
+        for(int i=0; i<sprites.Count; i++)
+        {
+            sprites[i].sprite = icons[typeOfTrain[i]];
+        }
     }
+
 
     private void FinishLevel()
     {
