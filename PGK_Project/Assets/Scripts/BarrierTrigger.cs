@@ -36,22 +36,22 @@ public class BarrierTrigger : MonoBehaviour {
     void FixedUpdate () {
         clickDelay += Time.deltaTime;
 
-        if (isBarrierClosed == true && clickDelay >= 1.0f)
-        {
-            foreach (GameObject t in barrierLights)
-            {
-                t.GetComponent<Renderer>().material = myMaterials[1];
-            }
+        //if (isBarrierClosed == true && clickDelay >= 1.0f)
+        //{
+        //    foreach (GameObject t in barrierLights)
+        //    {
+        //        t.GetComponent<Renderer>().material = myMaterials[1];
+        //    }
             
-        }
-        else if (isBarrierClosed == false && clickDelay >= 1.0f)
-        {
-            foreach (GameObject t in barrierLights)
-            {
-                t.GetComponent<Renderer>().material = myMaterials[0];
-            }
+        //}
+        //else if (isBarrierClosed == false && clickDelay >= 1.0f)
+        //{
+        //    foreach (GameObject t in barrierLights)
+        //    {
+        //        t.GetComponent<Renderer>().material = myMaterials[0];
+        //    }
            
-        }
+        //}
 	}
 
     private void OnMouseDown()

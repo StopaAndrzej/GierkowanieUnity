@@ -24,7 +24,7 @@ public class CarSpawn : MonoBehaviour {
         if (timer > period)
         {
             spawnCar();
-            period = Random.Range(1, 5);
+            period = Random.Range(5, 10);
             timer = 0.0;
         }
     }
