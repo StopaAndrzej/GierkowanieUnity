@@ -16,6 +16,7 @@ TagManager:
   - TrainExpress
   - CargoStation
   - TrafficLightStop
+  - Repairable
   layers:
   - Default
   - TransparentFX
