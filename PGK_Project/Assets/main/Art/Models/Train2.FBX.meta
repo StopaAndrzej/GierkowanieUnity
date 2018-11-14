@@ -1,0 +1,239 @@
+fileFormatVersion: 2
+guid: 5bb06e98c601b5745b708874bcfbd961
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: drzwi1
+    100002: drzwi10
+    100004: drzwi11
+    100006: drzwi12
+    100008: drzwi13
+    100010: drzwi14
+    100012: drzwi15
+    100014: drzwi16
+    100016: drzwi17
+    100018: drzwi18
+    100020: drzwi19
+    100022: drzwi2
+    100024: drzwi20
+    100026: drzwi21
+    100028: drzwi22
+    100030: drzwi23
+    100032: drzwi24
+    100034: drzwi3
+    100036: drzwi4
+    100038: drzwi5
+    100040: drzwi6
+    100042: drzwi7
+    100044: drzwi8
+    100046: drzwi9
+    100048: Line001
+    100050: Rectangle001
+    100052: //RootNode
+    100054: wagon1
+    100056: wagon2
+    100058: wagon3
+    400000: drzwi1
+    400002: drzwi10
+    400004: drzwi11
+    400006: drzwi12
+    400008: drzwi13
+    400010: drzwi14
+    400012: drzwi15
+    400014: drzwi16
+    400016: drzwi17
+    400018: drzwi18
+    400020: drzwi19
+    400022: drzwi2
+    400024: drzwi20
+    400026: drzwi21
+    400028: drzwi22
+    400030: drzwi23
+    400032: drzwi24
+    400034: drzwi3
+    400036: drzwi4
+    400038: drzwi5
+    400040: drzwi6
+    400042: drzwi7
+    400044: drzwi8
+    400046: drzwi9
+    400048: Line001
+    400050: Rectangle001
+    400052: //RootNode
+    400054: wagon1
+    400056: wagon2
+    400058: wagon3
+    2100000: No Name
+    2100002: 'Material #92'
+    2100004: train
+    2100006: 'Material #75'
+    2100008: 'Material #62'
+    2100010: 'Material #90'
+    2100012: 'Material #77'
+    2100014: 'Material #89'
+    2300000: drzwi1
+    2300002: drzwi10
+    2300004: drzwi11
+    2300006: drzwi12
+    2300008: drzwi13
+    2300010: drzwi14
+    2300012: drzwi15
+    2300014: drzwi16
+    2300016: drzwi17
+    2300018: drzwi18
+    2300020: drzwi19
+    2300022: drzwi2
+    2300024: drzwi20
+    2300026: drzwi21
+    2300028: drzwi22
+    2300030: drzwi23
+    2300032: drzwi24
+    2300034: drzwi3
+    2300036: drzwi4
+    2300038: drzwi5
+    2300040: drzwi6
+    2300042: drzwi7
+    2300044: drzwi8
+    2300046: drzwi9
+    2300048: Rectangle001
+    2300050: wagon1
+    2300052: wagon2
+    2300054: wagon3
+    3300000: drzwi1
+    3300002: drzwi10
+    3300004: drzwi11
+    3300006: drzwi12
+    3300008: drzwi13
+    3300010: drzwi14
+    3300012: drzwi15
+    3300014: drzwi16
+    3300016: drzwi17
+    3300018: drzwi18
+    3300020: drzwi19
+    3300022: drzwi2
+    3300024: drzwi20
+    3300026: drzwi21
+    3300028: drzwi22
+    3300030: drzwi23
+    3300032: drzwi24
+    3300034: drzwi3
+    3300036: drzwi4
+    3300038: drzwi5
+    3300040: drzwi6
+    3300042: drzwi7
+    3300044: drzwi8
+    3300046: drzwi9
+    3300048: Rectangle001
+    3300050: wagon1
+    3300052: wagon2
+    3300054: wagon3
+    4300000: Rectangle001
+    4300002: wagon1
+    4300004: wagon2
+    4300006: wagon3
+    4300008: drzwi1
+    4300010: drzwi2
+    4300012: drzwi3
+    4300014: drzwi4
+    4300016: drzwi5
+    4300018: drzwi6
+    4300020: drzwi7
+    4300022: drzwi8
+    4300024: drzwi9
+    4300026: drzwi10
+    4300028: drzwi11
+    4300030: drzwi12
+    4300032: drzwi13
+    4300034: drzwi14
+    4300036: drzwi15
+    4300038: drzwi16
+    4300040: drzwi17
+    4300042: drzwi18
+    4300044: drzwi19
+    4300046: drzwi20
+    4300048: drzwi21
+    4300050: drzwi22
+    4300052: drzwi23
+    4300054: drzwi24
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

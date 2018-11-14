@@ -20,10 +20,10 @@ public class BarrierTrigger : MonoBehaviour {
         baricade1 = GameObject.Find("BarrierTriggerCube1");
         baricade2 = GameObject.Find("BarrierTriggerCube2");
         anim = anim.GetComponent<Animator>();
-        foreach(GameObject t in barrierLights)
-        {
-            t.GetComponent<Renderer>().material = myMaterials[0];
-        }
+        //foreach(GameObject t in barrierLights)
+        //{
+        //    t.GetComponent<Renderer>().material = myMaterials[0];
+        //}
         //foreach (GameObject x in baricades)
         //{
             baricade1.GetComponent<BoxCollider>().enabled = false;
