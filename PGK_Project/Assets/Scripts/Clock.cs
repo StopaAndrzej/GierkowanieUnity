@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Globalization;
 using System.Collections.Generic;
+using TMPro;
 
 public class Clock : MonoBehaviour {
 
@@ -50,7 +52,8 @@ public class Clock : MonoBehaviour {
     public List<SpriteRenderer> sprites;
 
     //trains banner timetables
-
+    public GameObject bannerTimeSlots;                      //SPRAWDZIC
+    public List<TextMeshProUGUI> times;
 
     void Start()
     {
@@ -59,6 +62,10 @@ public class Clock : MonoBehaviour {
             sprites.Add(child.GetComponent<SpriteRenderer>());
         }
 
+        foreach (Transform child1 in bannerTimeSlots.transform)
+        {
+            times.Add(child1.GetComponent<TextMeshProUGUI>());             //SPRAWDZIC
+        }
 
         timeBooster = 1;
         playTime = 300f;
@@ -164,8 +171,21 @@ public class Clock : MonoBehaviour {
         for(int i=0; i<sprites.Count; i++)
         {
             sprites[i].sprite = icons[typeOfTrain[i]];
+            string convertToString=null;
+            if ((timetables[i] / 60) < 10)
+            {
+                convertToString += "0";
+            }
+            convertToString += (timetables[i] / 60).ToString()+":";
+            if ((timetables[i] % 60) < 10)
+            {
+                convertToString += "0";
+            }
+            convertToString += (timetables[i]%60).ToString();
+            times[i].text = convertToString;
         }
     }
+
 
 
     private void FinishLevel()
