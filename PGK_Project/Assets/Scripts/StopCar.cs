@@ -76,7 +76,6 @@ public class StopCar : MonoBehaviour
             trafficLights = other.GetComponent<TrafficStop>().trafficLights;
             if (trafficLights.isGreen != true)
             {
-                Debug.Log("Car stopped at Lights");
                 moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
                 car.GetComponent<CarMovement>().moveSpeed = 0;
                 stoppedAtLights = true;
