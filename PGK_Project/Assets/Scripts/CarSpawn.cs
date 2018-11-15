@@ -8,6 +8,7 @@ public class CarSpawn : MonoBehaviour {
     public GameObject go;
     public GameObject currentSpawnedCar;
     public GameObject parent;
+
     double timer = 0.0;
     int period=1;
     public int id;
@@ -30,11 +31,15 @@ public class CarSpawn : MonoBehaviour {
     }
     void spawnCar()
     {
+        int r = Random.Range(1, 3);
         currentSpawnedCar = Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
+        if (r == 1)
+        {
+            currentSpawnedCar.GetComponent<CarMovement>().model2.SetActive(false);
+        } else
+        {
+            currentSpawnedCar.GetComponent<CarMovement>().model1.SetActive(false);
+        }
         currentSpawnedCar.GetComponent<CarMovement>().whichSpawn = id;
-        Debug.Log("CAR SPAWN");
-        Debug.Log("CAR SPAWN");
-        Debug.Log("CAR SPAWN");
-        Debug.Log(go.ToString());
     }
 }
