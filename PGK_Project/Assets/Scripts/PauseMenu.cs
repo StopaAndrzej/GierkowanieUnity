@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
+    public bool isGameOver = false;
+
 
     public GameObject pauseMenuUI;
-
+    public GameObject gameOverUI;
+    public GameObject[] uiElementsToDisable;
 
 	// Update is called once per frame
 	void Update () {
@@ -24,11 +27,17 @@ public class PauseMenu : MonoBehaviour {
             }
 
         }
+        if (isGameOver)
+        {
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
 	}
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        showOtherUiElements(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -36,6 +45,7 @@ public class PauseMenu : MonoBehaviour {
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        showOtherUiElements(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -48,5 +58,18 @@ public class PauseMenu : MonoBehaviour {
     public void Quit()
     {
         Application.Quit();
+    }
+    public void showOtherUiElements(bool show)
+    {
+       foreach (GameObject o in uiElementsToDisable)
+        {
+            if (show)
+            {
+                o.SetActive(true);
+            } else
+            {
+                o.SetActive(false);
+            }
+        }
     }
 }
