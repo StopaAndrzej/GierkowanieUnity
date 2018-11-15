@@ -8,25 +8,45 @@ public class TrainMove2 : MonoBehaviour {
     public float speed = 10;
     private int numberToDestroy;
 
+    private float timer;
+
     public int whichPeron;
     private bool wrongPeron;
     private bool isClicked;
+    private bool enterTheTrain;
     public bool readyToGo;
 
-    private GameObject passagersFolder;
-
+    public GameObject passagersFolder;
+    public GameObject peopleSpawner;
 
     // Use this for initialization
     void Start () {
+        timer = 0;
         isClicked = false;
         readyToGo = false;
         trainCapacity = 20;
         numberToDestroy = 0;
+        peopleSpawner = GameObject.Find("PeopleSpawner0");
     }
 	
 	// Update is called once per frame
 	void Update () {
         GetComponent<Rigidbody>().velocity = transform.right * speed * Time.deltaTime;
+        if (enterTheTrain)
+        {
+            if (passagersFolder.transform.childCount > numberToDestroy && trainCapacity > 0)
+            {
+                timer += Time.deltaTime;
+                if (timer > 1)
+                {
+                    timer = 0;
+                    trainCapacity--;
+                    Destroy(passagersFolder.transform.GetChild(numberToDestroy).gameObject);
+                    peopleSpawner.GetComponent<PeopleSpawner>().peopleNumber--;
+                    numberToDestroy++;
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +86,7 @@ public class TrainMove2 : MonoBehaviour {
             {
                 Debug.Log("PROSZE WSIADAC!!!!");
                 isClicked = true;
+                enterTheTrain = true;
             }
 
         }
@@ -80,6 +101,7 @@ public class TrainMove2 : MonoBehaviour {
             {
                 Debug.Log("ODJAZD!!!!");
                 isClicked = true;
+                enterTheTrain = false;
                 readyToGo = true;
             }
         }

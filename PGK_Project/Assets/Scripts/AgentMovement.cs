@@ -19,8 +19,8 @@ public class AgentMovement : MonoBehaviour {
         home = GameObject.Find(nameOfPath).transform;
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(home.position);
-        agent.GetComponent<NavMeshAgent>().speed = 10 + Random.Range(-5f, 5f);
-        transform.localScale = new Vector3(transform.localScale.x*4,transform.localScale.y * 4 + Random.Range(-0.5f, 0.5f),transform.localScale.z*4);
+        agent.GetComponent<NavMeshAgent>().speed = 10 + Random.Range(-3f, 3f);
+        transform.localScale = new Vector3(transform.localScale.x*3,transform.localScale.y * 4 + Random.Range(-0.1f, 0.1f),transform.localScale.z*3);
    
 	}
 	
