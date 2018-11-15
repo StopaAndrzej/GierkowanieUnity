@@ -110,7 +110,7 @@ public class Clock : MonoBehaviour {
             if (intPlayTime == time && !spawnTrainDelay)
             {
                 Debug.Log("TrainSpawned!");
-                GameObject actualSpawnedTrain = Instantiate(trainType[0], trainSpawner.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+                GameObject actualSpawnedTrain = Instantiate(trainType[0], trainSpawner.transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
                 trains.Add(actualSpawnedTrain);
                 spawnTrainDelay = true;
                 spawnTrainDelaySavedTime = intPlayTime;

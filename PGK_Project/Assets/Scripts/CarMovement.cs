@@ -9,7 +9,7 @@ public class CarMovement : MonoBehaviour {
 	public Transform[] path;
     public Transform currentPath;
     public float maxSteerAngle = 40f;
-	public float moveSpeed = 0.2f;
+	public float moveSpeed = 10.0f;
     public float sensorLenght = 0.5f;
     public float frontSensorPos = 0.8f;
 
