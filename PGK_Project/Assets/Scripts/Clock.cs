@@ -97,7 +97,7 @@ public class Clock : MonoBehaviour {
         float hoursDegree = (intPlayTime / 720f) * 360f;
         hoursHand.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -hoursDegree));
 
-        if (Input.GetKey("space"))
+        if (Input.GetKeyDown(KeyCode.Space))
             timeBooster = 5;
         else
             timeBooster = 1;
