@@ -9,7 +9,7 @@ public class CarMovement : MonoBehaviour {
 	public Transform[] path;
     public Transform currentPath;
     public float maxSteerAngle = 40f;
-	public float moveSpeed = 0.2f;
+	public float moveSpeed = 0.8f;
     public float sensorLenght = 0.5f;
     public float frontSensorPos = 0.8f;
 
@@ -19,33 +19,10 @@ public class CarMovement : MonoBehaviour {
 
 	void Start () {
         
-        moveSpeed = 0.2f;
+        moveSpeed = 0.8f;
         int r = Random.Range(1, 3);
-       
 
-        path[0] = GameObject.Find("CarPaths").transform;
-        path[1] = GameObject.Find("CarPaths2").transform;
-        path[2] = GameObject.Find("CarPaths3").transform;
-        path[3] = GameObject.Find("CarPaths4").transform;
-
-
-
-        if (r == 1 && whichSpawn==1)
-        {
-            currentPath = path[0];
-        }
-        else if(r == 2 && whichSpawn == 1)
-        {
-            currentPath = path[1];
-        }
-        else if (r == 1 && whichSpawn == 2)
-        {
-            currentPath = path[2];
-        }
-        else if (r == 2 && whichSpawn == 2)
-        {
-            currentPath = path[3];
-        }
+        currentPath = findClosestPath().transform;
 
         Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
@@ -98,7 +75,22 @@ public class CarMovement : MonoBehaviour {
         //moveSpeed = 0;
     }
 
-
-
-
+    public GameObject findClosestPath()
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("carPath");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
 }
