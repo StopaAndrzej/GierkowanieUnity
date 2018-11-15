@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class StopTrainPeron : MonoBehaviour {
 
-
-    private float lastSpeed;
     private bool slowDown;
+    private bool isStoped;
+
+    public float lastSpeed;
     private float slowDownParameter;
 
     private GameObject thisGameObject;
 
     // Use this for initialization
     void Start() {
+       isStoped = false;
        slowDown = false;
        slowDownParameter = 1;
     }
@@ -21,6 +23,13 @@ public class StopTrainPeron : MonoBehaviour {
         if (slowDown)
         {
             SlowDownTheTrain(thisGameObject);
+        }
+        if (isStoped)
+        {
+            if (thisGameObject.GetComponentInParent<TrainMove2>().readyToGo == true)
+            {
+                SpeedUpTheTrain(thisGameObject);
+            }
         }
 	}
 
@@ -64,8 +73,25 @@ public class StopTrainPeron : MonoBehaviour {
         }
         else
         {
+            slowDownParameter = 1;
             obj.GetComponentInParent<TrainMove2>().speed = 0;
+            isStoped = true ;
+        }
+    }
+
+    private void SpeedUpTheTrain(GameObject obj)
+    {
+        if(obj.GetComponentInParent<TrainMove2>().speed < lastSpeed)
+        {
+            obj.GetComponentInParent<TrainMove2>().speed += slowDownParameter;
+            slowDownParameter *= 1.02f;
+        }
+        else
+        {
+            slowDownParameter = 1;
+            obj.GetComponentInParent<TrainMove2>().speed = lastSpeed;
             slowDown = false;
+            isStoped = false;
         }
     }
 }
