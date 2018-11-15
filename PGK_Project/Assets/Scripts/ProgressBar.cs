@@ -61,4 +61,9 @@ public class ProgressBar : MonoBehaviour
             barRed.GetComponent<Renderer>().enabled = false;
         }
     }
+    public void reset()
+    {
+        isComplete = false;
+        barScaleFactor = 0;
+    }
 }

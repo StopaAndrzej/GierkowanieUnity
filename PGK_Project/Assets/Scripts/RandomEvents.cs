@@ -1,36 +1,35 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class RandomEvents : MonoBehaviour {
+public class RandomEvents : MonoBehaviour
+{
 
-//    public GameObject[] trainTracks = null;
-//    public int timeToNextEvent = 10;
-//    public float time = 0;
+    public GameObject[] trainTracks = null;
+    public int timeToNextEvent = 20;
+    public float time = 0;
 
-//    void Start () {
-//        trainTracks = GameObject.FindGameObjectsWithTag("Repairable");
-//    }
-	
-//	void Update () {
+    void Start()
+    {
+        trainTracks = GameObject.FindGameObjectsWithTag("Repairable");
+    }
 
-//        time += Time.deltaTime;
-//        if(time > timeToNextEvent)
-//        {
-//            GameObject o = randomTrackPos();
-//            pos = o.transform.position;
-//            //GameObject cube = Instantiate(cubeToTrack, pos, Quaternion.identity);
-//            o.GetComponent<TrainTrack>().broken = true;
+    void Update()
+    {
 
-//            pos.x = pos.x - 10;
-//            Debug.Log("camPos " + transform.position);
-//        }
-//    }
+        time += Time.deltaTime;
+        if (time > timeToNextEvent)
+        {
+            GameObject o = randomTrackPos();
+            o.GetComponent<TrainTrack>().broken = true;
+            time = 0;
+        }
+    }
 
-//    private GameObject randomTrackPos()
-//    {
-//        int trackNumber = Random.Range(0, 1);
-//        GameObject o = trackGameObjects[trackNumber].gameObject;
-//        return o;
-//    }
-//}
+    private GameObject randomTrackPos()
+    {
+        int trackNumber = Random.Range(0, trainTracks.Length);
+        GameObject o = trainTracks[trackNumber].gameObject;
+        return o;
+    }
+}
