@@ -25,6 +25,8 @@ public class NPCHuman : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        nameOfPath = "CheckPoint" + i;
+        home = GameObject.Find(nameOfPath).transform;
+        agent.SetDestination(home.position);
+    }
 }
