@@ -8,7 +8,7 @@ public class ChangeDestination : MonoBehaviour {
     {
         if (other.transform.tag == "crowd")
         {
-            other.GetComponent<NPCHuman>().i++;
+            Destroy(other.gameObject);
         }
     }
 }
