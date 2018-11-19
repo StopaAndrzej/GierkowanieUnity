@@ -53,7 +53,7 @@ public class StopCar : MonoBehaviour
         Debug.Log(gameObject.name + " collided with " + other.name);
 
         GameObject go = GameObject.Find("BarrierTriggerCube");
-        BarrierTrigger b = go.GetComponent<BarrierTrigger>();
+        //BarrierTrigger b = go.GetComponent<BarrierTrigger>();
         if (other.transform.tag == "barrier")
         {
             moveSpeed = car.GetComponent<CarMovement>().moveSpeed;

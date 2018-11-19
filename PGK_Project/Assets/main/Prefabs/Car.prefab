@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 1571899778555438}
   m_LocalRotation: {x: -0, y: -0.7078641, z: -0, w: 0.70634866}
   m_LocalPosition: {x: -274.42, y: -5, z: 281.39}
-  m_LocalScale: {x: 7.2415695, y: 4.3888254, z: 18.257524}
+  m_LocalScale: {x: 1.277764, y: 0.7744014, z: 3.221512}
   m_Children:
   - {fileID: 4891416658745962}
   - {fileID: 4720055405302672}
@@ -539,6 +539,7 @@ MonoBehaviour:
   moveSpeed: 1
   model1: {fileID: 1040508073909654}
   model2: {fileID: 1480836041835514}
+  gos: []
   whichSpawn: 0
 --- !u!114 &114870616778591822
 MonoBehaviour:

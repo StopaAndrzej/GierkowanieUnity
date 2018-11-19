@@ -9,20 +9,20 @@ public class CarMovement : MonoBehaviour {
 	public Transform[] path;
     public Transform currentPath;
     public float maxSteerAngle = 40f;
-	public float moveSpeed = 1.0f;
+	public float moveSpeed = 0.2f;
     public GameObject model1;
     public GameObject model2;
-
-    private List<Transform> nodes;
-	private int currentNode = 0;
+    public GameObject[] gos;
+    public List<Transform> nodes;
+	public int currentNode = 0;
     public int whichSpawn;
 
 	void Start () {
         
-        moveSpeed = 1f;
+        moveSpeed = 0.1f;
         
 
-        currentPath = findClosestSpawn().transform;
+        //currentPath = findClosestSpawn().transform;
 
         Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
@@ -57,11 +57,14 @@ public class CarMovement : MonoBehaviour {
 	}
 
 	private void CheckNodeDistance(){
-		if(Vector3.Distance(transform.position, nodes[currentNode].position) < 0.5f){
+
+		if(Vector3.Distance(transform.position, nodes[currentNode].position) < 1f){
 			if(currentNode == nodes.Count - 1){
 				currentNode = 0;
-			}
-			else{
+                Destroy(gameObject);
+            }
+            else
+            {
 				currentNode++;
 			}
 
@@ -76,7 +79,6 @@ public class CarMovement : MonoBehaviour {
 
     public GameObject findClosestSpawn()
     {
-        GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("carPath");
         GameObject closest = null;
         float distance = Mathf.Infinity;
@@ -93,6 +95,4 @@ public class CarMovement : MonoBehaviour {
         }
         return closest;
     }
-
-
 }
