@@ -9,6 +9,7 @@ public class ChangeDestination : MonoBehaviour {
         if (other.transform.tag == "crowd")
         {
             Destroy(other.gameObject);
+            GameObject.Find("Parking").GetComponent<Parking>().spawnCar();
         }
     }
 }

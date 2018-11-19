@@ -18,15 +18,15 @@ public class Parking : MonoBehaviour {
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > period)
-        {
-            spawnCar();
-            period = Random.Range(5, 10);
-            timer = 0.0;
-        }
+        //timer += Time.deltaTime;
+        //if (timer > period)
+        //{
+        //    spawnCar();
+        //    period = Random.Range(5, 10);
+        //    timer = 0.0;
+        //}
     }
-    void spawnCar()
+    public void spawnCar()
     {
         int r = Random.Range(1, 3);
         currentSpawnedCar = Instantiate(carPrefab, gameObject.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
