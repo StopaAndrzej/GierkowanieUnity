@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour {
     public float maxY = 20f;
     public bool isGameOver = false;
     public GameObject gameOverText;
+    public bool isFolowingTarget = false;
+    public GameObject targetToFollow = null;
 
     private void Start()
     {
@@ -23,39 +25,49 @@ public class CameraController : MonoBehaviour {
     void Update() {
         if (!isGameOver)
         {
-
         Vector3 pos = transform.position;
+            if(isFolowingTarget)
+            {
+                pos.x = targetToFollow.transform.position.x;
+                pos.z = targetToFollow.transform.position.z;
+                pos.z = pos.z - 50;
+            }
             
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 turbo = 3.0f;
+                stopFollowingTarget();
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 turbo = 1.0f;
+                stopFollowingTarget();
             }
             if (Input.GetKey("d") ) 
             {
                 pos.x += panSpeed * Time.deltaTime*turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("a") )
             {
                 pos.x -= panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("s") )
             {
                 pos.z -= panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("w") )
             {
                 pos.z += panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
         pos.y -= scroll * scrollSpeed * Time.deltaTime *100f;
         
 
@@ -73,5 +85,16 @@ public class CameraController : MonoBehaviour {
         isGameOver = true;
         gameOverText.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void followTarget(GameObject o)
+    {
+        targetToFollow = o;
+        isFolowingTarget = true;
+    }
+
+    public void stopFollowingTarget()
+    {
+        isFolowingTarget = false;
     }
 }
