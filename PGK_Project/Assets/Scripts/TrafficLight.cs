@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrafficLight : MonoBehaviour {
 
-    public bool isGreen = true;
+    public bool isGreen;
     public Material off;
     public Material greenMaterial;
     public Material orangeMaterial;
@@ -13,6 +13,11 @@ public class TrafficLight : MonoBehaviour {
     public GameObject green;
     public GameObject orange;
     public GameObject red;
+
+    public GameObject colliderL;    //kolajdery do blokowania pieszych, sami dopasowywujemy
+    public GameObject colliderR;
+
+  
 
     private Material greenMaterialOriginal;
     private Material orangeMaterialOriginal;
@@ -24,34 +29,43 @@ public class TrafficLight : MonoBehaviour {
         greenMaterialOriginal = green.GetComponent<Renderer>().material;
         orangeMaterialOriginal = orange.GetComponent<Renderer>().material;
         redMaterialOriginal = red.GetComponent<Renderer>().material;
-
         green.GetComponent<Renderer>().material = greenMaterial;
+        isGreen = true;
+
+        
+
+        
     }
 
     // Update is called once per frame
     void Update () {
-		
-	}
+        if (isGreen)                    //wywalilem z onMouseDown do updata, bo w przeciwnym razie nie było by odświeżania w skrypcie trafficLisghtCross
+        {
+            green.GetComponent<Renderer>().material = greenMaterialOriginal;
+            orange.GetComponent<Renderer>().material = orangeMaterial;
+            greenToRed();
+            colliderR.GetComponent<BoxCollider>().enabled = false;
+            colliderL.GetComponent<BoxCollider>().enabled = false;
+            //red.GetComponent<Renderer>().material = redMaterial;
+        }
+        else
+        {
+            red.GetComponent<Renderer>().material = redMaterialOriginal;
+            orange.GetComponent<Renderer>().material = orangeMaterial;
+            redToGreen();
+            colliderR.GetComponent<BoxCollider>().enabled = true;
+            colliderL.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
 
     public void OnMouseDown()
     {
         if (isGreen)
         {
             isGreen = false;
-            green.GetComponent<Renderer>().material = greenMaterialOriginal;
-            orange.GetComponent<Renderer>().material = orangeMaterial;
-            //Invoke("GreenToRed", delay);
-            greenToRed();
-            enableColliders(false); 
-            //red.GetComponent<Renderer>().material = redMaterial;
         } else
         {
-            enableColliders(true);
             isGreen = true;
-            red.GetComponent<Renderer>().material = redMaterialOriginal;
-            orange.GetComponent<Renderer>().material = orangeMaterial;
-            //Invoke("RedToGreen", delay);
-            redToGreen();
         }
 
     }
@@ -69,17 +83,6 @@ public class TrafficLight : MonoBehaviour {
 
     }
 
-    private void enableColliders(bool enable)
-    {
-        GameObject trafficStop = GameObject.Find("TrafficLightStop");
+  
 
-        foreach (BoxCollider g in trafficStop.GetComponentsInChildren<BoxCollider>())
-        {
-            Debug.Log(g.tag);
-            if (g.tag == "CrowdBlockade")
-            {
-                g.enabled = enable;
-            }
-        }
-    }
 }
