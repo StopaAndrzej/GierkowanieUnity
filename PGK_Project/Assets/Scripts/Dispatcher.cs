@@ -9,6 +9,7 @@ public class Dispatcher : MonoBehaviour {
     public float timer;
     public bool readyToDepartureTruck;
     public bool stopTimer;
+    public bool procedure;
 
     public Animator anim;
 
@@ -17,6 +18,7 @@ public class Dispatcher : MonoBehaviour {
         timer = 0.0f;
         readyToDepartureTruck = false;
         stopTimer = false;
+        procedure = false;
         anim = GetComponent<Animator>();
     }
 	
@@ -33,6 +35,10 @@ public class Dispatcher : MonoBehaviour {
         if (readyToDepartureTruck)
         {
             DepartureTruck();
+        }
+        if (procedure)
+        {
+            Rest(5.0f);
         }
 	}
 
@@ -54,18 +60,29 @@ public class Dispatcher : MonoBehaviour {
             print("Ciezarowka wyjechala z dyspozytorni!");
             anim.Play("DispatcherOpen");
             readyToDepartureTruck = false;
-            timer = 0.0f;
+            timer = 0;
             stopTimer = true;
-            Rest(5.0f);
+            procedure = true;
     }
 
     private void Rest(float rest)
     {
+        
         timer += Time.deltaTime;
         if (timer >= rest)
         {
-            timer = 0.0f;
-            stopTimer = false;
+            Debug.Log("SPAWN CIEZAROWE!");
+            GameObject.Find("TruckSpawner").GetComponent<SpawnTruck>().Spawn();
+            if(timer>= 2 * rest)
+            {
+                Debug.Log("ZAMKNIJ WROTA!");
+                anim.Play("DispatcherClose");
+                timer = 0.0f;
+                stopTimer = false;
+                procedure = false;
+            }
+            
+            
         }
     }
 
