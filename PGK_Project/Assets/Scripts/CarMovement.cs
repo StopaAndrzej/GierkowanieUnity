@@ -16,14 +16,15 @@ public class CarMovement : MonoBehaviour {
     public List<Transform> nodes;
 	public int currentNode = 0;
     public int whichSpawn;
+    public GameObject dispatcher; //link do dyspozytornik ktora zlicza pojazdy i na jej podstawie wydaje ciezarowki
 
-	void Start () {
+    void Start () {
         
         moveSpeed = 0.1f;
-        
+
 
         //currentPath = findClosestSpawn().transform;
-
+        dispatcher = GameObject.Find("Dispatcher");//przypisanie dyspozytorni ciezarowek
         Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
 
@@ -62,6 +63,7 @@ public class CarMovement : MonoBehaviour {
 			if(currentNode == nodes.Count - 1){
 				currentNode = 0;
                 Destroy(gameObject);
+                dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers++;
             }
             else
             {
