@@ -10,6 +10,7 @@ public class Dispatcher : MonoBehaviour {
     public bool readyToDepartureTruck;
     public bool stopTimer;
     public bool procedure;
+    public bool spawnOnlyonTime;
 
     public Animator anim;
 
@@ -62,6 +63,7 @@ public class Dispatcher : MonoBehaviour {
             readyToDepartureTruck = false;
             timer = 0;
             stopTimer = true;
+            spawnOnlyonTime = true;
             procedure = true;
     }
 
@@ -72,7 +74,12 @@ public class Dispatcher : MonoBehaviour {
         if (timer >= rest)
         {
             Debug.Log("SPAWN CIEZAROWE!");
-            GameObject.Find("TruckSpawner").GetComponent<SpawnTruck>().Spawn();
+            if (spawnOnlyonTime)
+            {
+                GameObject.Find("TruckSpawner").GetComponent<SpawnTruck>().Spawn();
+                spawnOnlyonTime = false;
+            }
+           
             if(timer>= 2 * rest)
             {
                 Debug.Log("ZAMKNIJ WROTA!");
