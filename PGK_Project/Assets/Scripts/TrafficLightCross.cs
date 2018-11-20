@@ -24,6 +24,11 @@ public class TrafficLightCross : MonoBehaviour
             {
                 foreach (GameObject light1 in secondDirection)
                 {
+                    if(light1.GetComponent<TrafficLight>().isGreen == true)
+                    {
+                        light1.GetComponent<TrafficLight>().changeLights = true;
+                        light1.GetComponent<TrafficLight>().timeLeftForChange = light1.GetComponent<TrafficLight>().timeConstant;
+                    }
                     light1.GetComponent<TrafficLight>().isGreen = false;
                 }
             }
@@ -31,6 +36,11 @@ public class TrafficLightCross : MonoBehaviour
             {
                 foreach (GameObject light1 in secondDirection)
                 {
+                    if (light1.GetComponent<TrafficLight>().isGreen == false)
+                    {
+                        light1.GetComponent<TrafficLight>().changeLights = true;
+                        light1.GetComponent<TrafficLight>().timeLeftForChange = light1.GetComponent<TrafficLight>().timeConstant;
+                    }
                     light1.GetComponent<TrafficLight>().isGreen = true;
                 }
             }
