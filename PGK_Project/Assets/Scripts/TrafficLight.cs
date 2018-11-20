@@ -31,30 +31,22 @@ public class TrafficLight : MonoBehaviour {
         redMaterialOriginal = red.GetComponent<Renderer>().material;
         green.GetComponent<Renderer>().material = greenMaterial;
         isGreen = true;
-
-        
-
-        
     }
 
     // Update is called once per frame
     void Update () {
-        if (isGreen)                    //wywalilem z onMouseDown do updata, bo w przeciwnym razie nie było by odświeżania w skrypcie trafficLisghtCross
+        if (isGreen)
         {
-            green.GetComponent<Renderer>().material = greenMaterialOriginal;
-            orange.GetComponent<Renderer>().material = orangeMaterial;
-            greenToRed();
-            colliderR.GetComponent<BoxCollider>().enabled = false;
-            colliderL.GetComponent<BoxCollider>().enabled = false;
+            colliderR.GetComponent<BoxCollider>().enabled = true;
+            colliderL.GetComponent<BoxCollider>().enabled = true;
+            greenLight();
             //red.GetComponent<Renderer>().material = redMaterial;
         }
         else
         {
-            red.GetComponent<Renderer>().material = redMaterialOriginal;
-            orange.GetComponent<Renderer>().material = orangeMaterial;
-            redToGreen();
-            colliderR.GetComponent<BoxCollider>().enabled = true;
-            colliderL.GetComponent<BoxCollider>().enabled = true;
+            redLight();
+            colliderR.GetComponent<BoxCollider>().enabled = false;
+            colliderL.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -70,19 +62,20 @@ public class TrafficLight : MonoBehaviour {
 
     }
 
-    public void greenToRed()
+    public void redLight()
     {
         orange.GetComponent<Renderer>().material = orangeMaterialOriginal;
+        green.GetComponent<Renderer>().material = greenMaterialOriginal;
         red.GetComponent<Renderer>().material = redMaterial;
     }
 
-    public void redToGreen()
+    public void greenLight()
     {
         orange.GetComponent<Renderer>().material = orangeMaterialOriginal;
+        red.GetComponent<Renderer>().material = redMaterialOriginal;
         green.GetComponent<Renderer>().material = greenMaterial;
-
     }
 
-  
+
 
 }
