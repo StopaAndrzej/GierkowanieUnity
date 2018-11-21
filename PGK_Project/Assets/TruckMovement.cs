@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour {
 
-    public Transform[] path;
     public Transform currentPath;
     public float maxSteerAngle = 40f;
     public float moveSpeed = 0.2f;
     public GameObject model1;
-    public GameObject[] gos;
     public List<Transform> nodes;
     public int currentNode = 0;
-    public int whichSpawn;
 
     void Start()
     {
