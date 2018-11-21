@@ -31,10 +31,10 @@ public class Dispatcher : MonoBehaviour {
         //    Work();
         //}
         //else 
-        if (actuallNumberWorkers < 3)
-        {
-            timer = 0.0f;
-        }
+        //if (actuallNumberWorkers < 3)
+        //{
+        //    timer = 0.0f;
+        //}
         if (readyToDepartureTruck)
         {
             DepartureTruck();

@@ -20,7 +20,7 @@ public class SpawnTruck : MonoBehaviour {
         Debug.Log("SPAWN TRUCK!");
         spawnedTruck = Instantiate(truckPrefab, gameObject.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), truckFolder.transform);
         spawnedTruck.GetComponent<TruckMovement>().currentPath = truckPath.transform;
-
+        GameObject.Find("EventList").GetComponent<AddObjectToList>().addItem(spawnedTruck);
     }
 
 

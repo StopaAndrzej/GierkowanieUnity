@@ -55,8 +55,8 @@ public class DispatcherPanel : MonoBehaviour {
 
     private void spawnTruck()
     {
-        dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers -= 3;
         dispatcher.GetComponent<Dispatcher>().readyToDepartureTruck = true;
+        dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers -= 3;
         cd = 5f;
     }
 }

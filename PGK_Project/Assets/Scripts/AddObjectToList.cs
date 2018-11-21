@@ -7,7 +7,7 @@ public class AddObjectToList : MonoBehaviour {
 
     public GameObject itemTemplate;
     public GameObject content;
-    public static int number = 0;
+    public static int number = 1;
     public Button[] buttons;
     public int maxNumber = 6;
 
@@ -15,7 +15,7 @@ public class AddObjectToList : MonoBehaviour {
     {
         setParents(null);
         var copy = Instantiate(itemTemplate);
-        string textToSet = "New " + itemToAdd.name + " " + number++;
+        string textToSet = "Truck" + number++ + " " + "Destination: port" ;
         copy.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = textToSet;
         copy.transform.SetParent(content.transform, false);
         setParents(content);

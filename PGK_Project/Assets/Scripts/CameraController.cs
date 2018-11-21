@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
             {
                 pos.x = targetToFollow.transform.position.x;
                 pos.z = targetToFollow.transform.position.z;
-                pos.z = pos.z - 50;
+                pos.z = pos.z - 15;
             }
             
             if (Input.GetKeyDown(KeyCode.LeftShift))
