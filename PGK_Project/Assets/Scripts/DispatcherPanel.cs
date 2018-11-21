@@ -22,10 +22,10 @@ public class DispatcherPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        pracownicy.text = "";
-        liczbaPracownikow =dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers;
-        pracownicy.text = liczbaPracownikow.ToString();
-        pracownicy.text += "/56";
+        //pracownicy.text = "";
+        //liczbaPracownikow =dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers;
+        //pracownicy.text = liczbaPracownikow.ToString();
+        //pracownicy.text += "/56";
     }
 
 

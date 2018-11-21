@@ -21,9 +21,7 @@ public class CargoMove : MonoBehaviour
     public float lastSpeed;
     public float rotationSpeed;
 
-    public GameObject cargoBar;
-    public GameObject cargoBarRed;
-    public GameObject cargoBarHolder;
+
    
 
     public float scaleFactor = 0;
@@ -42,56 +40,20 @@ public class CargoMove : MonoBehaviour
         trainCapacity = 1000;
         actualCapacity = 0;
         speed = 150;
-        //cargoBar = this.gameObject.transform.GetChild(0).gameObject;
-        cargoBar.GetComponent<MeshRenderer>().enabled = false;
-        cargoBar.GetComponent<BoxCollider>().enabled = false;
-        cargoBarRed.GetComponent<MeshRenderer>().enabled = false;
-        cargoBarRed.GetComponent<BoxCollider>().enabled = false;
-        newRotation = transform.eulerAngles;
+
+        newRotation = transform.localEulerAngles;
     }
     // Update is called once per frame
     void Update()
     {
         GetComponent<Rigidbody>().velocity = transform.right * speed * Time.deltaTime;
         RotateTrain();
-        if (isMagazine == true && showOptions == true)
-        {
-            //cargoBar.GetComponent<MeshRenderer>().enabled = true;
-            //cargoBarRed.GetComponent<MeshRenderer>().enabled = true;
 
-            
-            if (showMagazineCapacity > 0 && actualCapacity < trainCapacity)
-            {
-                timer += Time.deltaTime;
-                if (timer > 0.2f)
-                {
-                    timer = 0;
-                    showMagazineCapacity-=4;
-                    actualCapacity += 4;
-                    scaleFactor = (float)(actualCapacity * 0.0097);
-                    cargoBar.GetComponent<Renderer>().enabled = true;
-                    cargoBarRed.GetComponent<Renderer>().enabled = true;
-                    Transform t = cargoBarHolder.transform;
-
-                    cargoBarHolder.transform.localScale = new Vector3(scaleFactor,
-                                                             t.transform.localScale.y,
-                                                             t.transform.localScale.z);
-                    if (actualCapacity>500)
-                        isFull = true;
-                }
-            }
-        }
-        else
-        {
-            cargoBar.GetComponent<Renderer>().enabled = false;
-            cargoBarRed.GetComponent<Renderer>().enabled = false;
-
-        }
     }
 
     public void RotateTrain()
     {
-        this.transform.localEulerAngles= Vector3.Lerp(transform.eulerAngles, newRotation, rotationSpeed);
+        this.transform.eulerAngles = Vector3.Lerp(transform.localEulerAngles, newRotation, rotationSpeed);
     }
 
     void OnTriggerEnter(Collider other)
@@ -102,17 +64,4 @@ public class CargoMove : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
-    {
-        if (!isClicked)
-        {
-            showOptions = true;
-            isClicked = true;
-        }
-        else if (isClicked)
-        {
-            showOptions = false;
-            isClicked = false;
-        }
-    }
 }
