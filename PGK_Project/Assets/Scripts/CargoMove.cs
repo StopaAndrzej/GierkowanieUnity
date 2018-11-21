@@ -15,9 +15,11 @@ public class CargoMove : MonoBehaviour
     public int actualCapacity;
     public int showMagazineCapacity;
 
+    public Vector3 newRotation;
     public float timer;
     public float speed;
     public float lastSpeed;
+    public float rotationSpeed;
 
     public GameObject cargoBar;
     public GameObject cargoBarRed;
@@ -45,13 +47,13 @@ public class CargoMove : MonoBehaviour
         cargoBar.GetComponent<BoxCollider>().enabled = false;
         cargoBarRed.GetComponent<MeshRenderer>().enabled = false;
         cargoBarRed.GetComponent<BoxCollider>().enabled = false;
-
+        newRotation = transform.eulerAngles;
     }
-
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * speed * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = transform.right * speed * Time.deltaTime;
+        RotateTrain();
         if (isMagazine == true && showOptions == true)
         {
             //cargoBar.GetComponent<MeshRenderer>().enabled = true;
@@ -85,6 +87,11 @@ public class CargoMove : MonoBehaviour
             cargoBarRed.GetComponent<Renderer>().enabled = false;
 
         }
+    }
+
+    public void RotateTrain()
+    {
+        this.transform.localEulerAngles= Vector3.Lerp(transform.eulerAngles, newRotation, rotationSpeed);
     }
 
     void OnTriggerEnter(Collider other)

@@ -18,6 +18,7 @@ TagManager:
   - TrafficLightStop
   - Repairable
   - CrowdBlockade
+  - ChangeAngle
   layers:
   - Default
   - TransparentFX

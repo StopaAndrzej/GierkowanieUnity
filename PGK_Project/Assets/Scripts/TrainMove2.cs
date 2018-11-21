@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrainMove2 : MonoBehaviour {
 
+
     public int trainCapacity;
     public float speed = 10;
     private int numberToDestroy;
@@ -17,7 +18,7 @@ public class TrainMove2 : MonoBehaviour {
     public bool readyToGo;
 
     public GameObject passagersFolder;
-    public GameObject peopleSpawner;
+    //public GameObject peopleSpawner;
 
     // Use this for initialization
     void Start () {
@@ -26,27 +27,28 @@ public class TrainMove2 : MonoBehaviour {
         readyToGo = false;
         trainCapacity = 20;
         numberToDestroy = 0;
-        peopleSpawner = GameObject.Find("PeopleSpawner0");
+        // peopleSpawner = GameObject.Find("PeopleSpawner0");
+        
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {   
         GetComponent<Rigidbody>().velocity = transform.right * speed * Time.deltaTime;
-        if (enterTheTrain)
-        {
-            if (passagersFolder.transform.childCount > numberToDestroy && trainCapacity > 0)
-            {
-                timer += Time.deltaTime;
-                if (timer > 1)
-                {
-                    timer = 0;
-                    trainCapacity--;
-                    Destroy(passagersFolder.transform.GetChild(numberToDestroy).gameObject);
-                    peopleSpawner.GetComponent<PeopleSpawner>().peopleNumber--;
-                    numberToDestroy++;
-                }
-            }
-        }
+        //if (enterTheTrain)
+        //{
+        //    if (passagersFolder.transform.childCount > numberToDestroy && trainCapacity > 0)
+        //    {
+        //        timer += Time.deltaTime;
+        //        if (timer > 1)
+        //        {
+        //            timer = 0;
+        //            trainCapacity--;
+        //            Destroy(passagersFolder.transform.GetChild(numberToDestroy).gameObject);
+        //            peopleSpawner.GetComponent<PeopleSpawner>().peopleNumber--;
+        //            numberToDestroy++;
+        //        }
+        //    }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,11 +66,11 @@ public class TrainMove2 : MonoBehaviour {
 
             if(whichPeron == 0)
             {
-                passagersFolder = GameObject.Find("SpawnedPeopleFolder0");
+                passagersFolder = GameObject.Find("SpawnedPeopleOnPeronFolder0");
             }
             if (whichPeron == 1)
             {
-                passagersFolder = GameObject.Find("SpawnedPeopleFolder1");
+                passagersFolder = GameObject.Find("SpawnedPeopleOnPeronFolder1");
             }
         }
     }
