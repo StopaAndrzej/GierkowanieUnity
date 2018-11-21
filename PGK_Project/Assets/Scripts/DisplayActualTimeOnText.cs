@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayActualTimeOnText : MonoBehaviour {
 
-    private Text clockText;
-    public int hour;
-    public int minute;
+    public TextMeshProUGUI clockText;
+    public float timeInMinutes = 300.0f;
+    public int intTime;
     private string display;
+
+    private int minutes;
+    private int hours;
 
 
     // Use this for initialization
@@ -22,28 +26,25 @@ public class DisplayActualTimeOnText : MonoBehaviour {
     {
         setTime();
         clockText.text = display;
-        //System.DateTime time = System.DateTime.Now;
-        //clockText.text = time.ToString("hh:mm");
     }
 
     void setTime()
     {
-        clockText = GetComponent<Text>();
-        hour = System.DateTime.Now.Minute;
-        minute = System.DateTime.Now.Second;
-
-        hour = hour % 24;
+        timeInMinutes += Time.deltaTime;
+        intTime = (int)timeInMinutes;
+        minutes = intTime % 60;
+        hours = (intTime / 60) % 24;
 
         display = "";
-        if (hour < 10)
+        if (hours < 10)
         {
             display = "0";
         }
-        display += hour.ToString() + ":";
-        if (minute < 10)
+        display += hours.ToString() + ":";
+        if (minutes < 10)
         {
             display += "0";
         }
-        display += minute.ToString();
+        display += minutes.ToString();
     }
 }
