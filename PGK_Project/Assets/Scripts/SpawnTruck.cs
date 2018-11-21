@@ -6,8 +6,8 @@ public class SpawnTruck : MonoBehaviour {
 
     public GameObject truckPrefab;
     public GameObject truckFolder;
-    public GameObject[] truckPaths; //zrobilem ci juz tablice
-
+    public GameObject truckPath;
+    public GameObject spawnedTruck;
 
 
     // Use this for initialization
@@ -18,7 +18,9 @@ public class SpawnTruck : MonoBehaviour {
 	public void Spawn()
     {
         Debug.Log("SPAWN TRUCK!");
-        Instantiate(truckPrefab, gameObject.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), truckFolder.transform);
+        spawnedTruck = Instantiate(truckPrefab, gameObject.transform.position, Quaternion.Euler(0.0f, 90.0f, 0.0f), truckFolder.transform);
+        spawnedTruck.GetComponent<TruckMovement>().currentPath = truckPath.transform;
+
     }
 
 
