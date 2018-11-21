@@ -4,22 +4,34 @@ using UnityEngine;
 
 public class ChangeSteering : MonoBehaviour {
 
-    public int angle;
-    private bool isActive = false;
+    public Animator anim;
+
     public GameObject changeSteeringImported;
+    public bool isClicked;
 
-
-  
-
-    public void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (changeSteeringImported.GetComponent<SteeringArrow>().changeSteering)
+        isClicked = false;
+        anim = GetComponent<Animator>();
+        changeSteeringImported.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    void OnMouseDown()
+    {
+        if (!isClicked)
         {
-            if (other.transform.tag == "Train" || other.transform.tag == "TrainCargo" || other.transform.tag == "TrainExpress")
-            {
-                other.transform.localEulerAngles = new Vector3(0, angle, 0);
-            }
+            anim.Play("LeverRight");
+            isClicked = true;
+            changeSteeringImported.GetComponent<BoxCollider>().enabled = true;
+        }
+        else if (isClicked)
+        {
+            anim.Play("LeverLeft");
+            isClicked = false;
+            changeSteeringImported.GetComponent<BoxCollider>().enabled = false;
         }
 
     }
+
+
 }
