@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dispatcher : MonoBehaviour {
 
@@ -25,11 +26,12 @@ public class Dispatcher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (actuallNumberWorkers >= 3)
-        {
-            Work();
-        }
-        else if (actuallNumberWorkers < 3)
+        //if (actuallNumberWorkers >= 3)
+        //{
+        //    Work();
+        //}
+        //else 
+        if (actuallNumberWorkers < 3)
         {
             timer = 0.0f;
         }
@@ -43,7 +45,7 @@ public class Dispatcher : MonoBehaviour {
         }
 	}
 
-    private void Work()
+    public void Work()
     {
         if(!stopTimer)
         {
