@@ -57,8 +57,8 @@ public class TruckMovement : MonoBehaviour {
         {
             if (currentNode == nodes.Count - 1)
             {
-                currentNode = 0;
                 moveSpeed = 0;
+               
             }
             else
             {
