@@ -772,7 +772,7 @@ MonoBehaviour:
   showMagazineCapacity: 0
   newRotation: {x: 0, y: 0, z: 0}
   timer: 0
-  speed: 100
+  speed: 500
   lastSpeed: 0
   rotationSpeed: 0.01
   scaleFactor: 0
