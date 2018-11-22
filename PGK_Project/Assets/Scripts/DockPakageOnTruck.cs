@@ -12,7 +12,7 @@ public class DockPakageOnTruck : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Dock")
+        if (other.transform.tag == "car")
         {
             isDocked = true;
         }
@@ -20,7 +20,7 @@ public class DockPakageOnTruck : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Dock")
+        if (other.transform.tag == "car")
         {
             isDocked = false;
         }
