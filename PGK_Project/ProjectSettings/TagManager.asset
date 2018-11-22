@@ -19,6 +19,7 @@ TagManager:
   - Repairable
   - CrowdBlockade
   - ChangeAngle
+  - Dock
   layers:
   - Default
   - TransparentFX

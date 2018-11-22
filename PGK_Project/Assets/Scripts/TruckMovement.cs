@@ -10,6 +10,9 @@ public class TruckMovement : MonoBehaviour {
     public GameObject model1;
     public List<Transform> nodes;
     public int currentNode = 0;
+    
+
+    public bool canLoadContainer;
 
     void Start()
     {
@@ -24,6 +27,7 @@ public class TruckMovement : MonoBehaviour {
                 nodes.Add(pathTransforms[i]);
             }
         }
+        
     }
 
 
@@ -32,6 +36,7 @@ public class TruckMovement : MonoBehaviour {
         ApplySteer();
         Drive();
         CheckNodeDistance();
+        CheckDock();
     }
 
 
@@ -67,4 +72,18 @@ public class TruckMovement : MonoBehaviour {
 
         }
     }
+
+    private void CheckDock()
+    {
+        if (this.GetComponent<DockPakageOnTruck>().isDocked)
+        {
+            canLoadContainer = true;
+        }
+        else
+        {
+            canLoadContainer = false;
+        }
+    }
+
+
 }

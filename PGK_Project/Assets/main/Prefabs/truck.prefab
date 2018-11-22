@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 33252037425106116}
   - component: {fileID: 65836466119898400}
   - component: {fileID: 114665644171111112}
+  - component: {fileID: 114742758979177258}
   m_Layer: 0
   m_Name: truck
   m_TagString: car
@@ -565,6 +566,19 @@ MonoBehaviour:
   model1: {fileID: 1384106408541890}
   nodes: []
   currentNode: 0
+  canLoadContainer: 0
+--- !u!114 &114742758979177258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605088477880130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c45d8af62ebf824381de376eb69f061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDocked: 0
 --- !u!114 &114962953489048314
 MonoBehaviour:
   m_ObjectHideFlags: 1

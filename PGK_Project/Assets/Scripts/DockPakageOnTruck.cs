@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class DockPakageOnTruck : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool isDocked;
+
+ 
+    
+  
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Dock")
+        {
+            isDocked = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Dock")
+        {
+            isDocked = false;
+        }
+    }
 }
