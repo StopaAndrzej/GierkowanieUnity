@@ -26,6 +26,13 @@ public class CameraController : MonoBehaviour {
         if (!isGameOver)
         {
         Vector3 pos = transform.position;
+            if(Input.GetMouseButtonDown(1))
+            {
+                foreach(GameObject o in GameObject.FindGameObjectsWithTag("UiPanel")){
+                    o.SetActive(false);
+                }
+
+            }
             if(isFolowingTarget)
             {
                 pos.x = targetToFollow.transform.position.x;
