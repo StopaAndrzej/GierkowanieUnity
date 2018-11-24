@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4170341592799120}
   - component: {fileID: 54258208871809876}
   - component: {fileID: 65862356662620338}
-  - component: {fileID: 114020114909743194}
+  - component: {fileID: 114185248988308660}
   m_Layer: 0
   m_Name: CargoTrainAlfa
   m_TagString: TrainCargo
@@ -752,7 +752,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07401637, y: 0.17570435, z: 0.17295533}
   m_Center: {x: 0.4132433, y: 0.057522375, z: 0.016188605}
---- !u!114 &114020114909743194
+--- !u!114 &114185248988308660
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -760,21 +760,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1088200341460294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9253787a29f6f4ca01619ce67e1bbd, type: 3}
+  m_Script: {fileID: 11500000, guid: cb49b3ddafed4c74287045f219eb9d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMagazine: 0
-  isClicked: 0
-  showOptions: 0
-  isFull: 0
-  trainCapacity: 1000
-  actualCapacity: 0
-  showMagazineCapacity: 0
-  newRotation: {x: 0, y: 0, z: 0}
-  timer: 0
-  speed: 500
-  lastSpeed: 0
-  rotationSpeed: 0.01
-  scaleFactor: 0
-  whichWay: 0
-  whichPeron: 0
+  currentPath: {fileID: 0}
+  maxSteerAngle: 40
+  moveSpeed: 0.2
+  gos: []
+  nodes: []
+  currentNode: {fileID: 0}
+  properPath: []

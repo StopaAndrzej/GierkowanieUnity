@@ -25,7 +25,7 @@ public class SpawnNPC : MonoBehaviour {
         if (timer > 1)
         {
             int index=UnityEngine.Random.Range(0, spawnPoints.Count + 1);
-            Debug.Log(index);
+            //Debug.Log(index);
             positionSpawn = spawnPoints[index];
             Instantiate(objectToSpawn, positionSpawn.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), folderToHoldCopies.transform);
             timer = 0.0f;

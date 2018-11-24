@@ -12,11 +12,11 @@ public class TrainTrack : MonoBehaviour
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
     public Cursor defaultC;
+    public TrainTrack nextTrack;
 
     // Use this for initialization
     void Start()
     {
-
         fixedTrack.SetActive(true);
         brokenTrack.SetActive(false);
     }
