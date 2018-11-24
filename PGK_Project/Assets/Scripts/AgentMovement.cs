@@ -15,7 +15,7 @@ public class AgentMovement : MonoBehaviour {
 	void Start () {
        
         var randomInt = Random.Range(0, 6);
-        nameOfPath = "CapsuleDestination" + randomInt.ToString();
+        nameOfPath = "CapsuleDestinationEntrance";
         home = GameObject.Find(nameOfPath).transform;
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(home.position);
