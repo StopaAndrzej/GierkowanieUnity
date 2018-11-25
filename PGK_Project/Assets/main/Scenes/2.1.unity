@@ -5187,6 +5187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0106ddf46a01d944b443871e5038fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitButton: {fileID: 1987974878}
+  plusButton: {fileID: 694803487}
+  minusButton: {fileID: 2113281205}
+  price: {fileID: 1418299272}
 --- !u!1001 &739974101
 Prefab:
   m_ObjectHideFlags: 0
@@ -9238,6 +9242,7 @@ GameObject:
   - component: {fileID: 1418299271}
   - component: {fileID: 1418299273}
   - component: {fileID: 1418299272}
+  - component: {fileID: 1418299274}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -9383,6 +9388,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418299270}
   m_CullTransparentMesh: 0
+--- !u!114 &1418299274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1418299270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5587c1ebde865764bae1cde98d584964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
 --- !u!1 &1436499520
 GameObject:
   m_ObjectHideFlags: 0
@@ -11634,6 +11651,7 @@ GameObject:
   - component: {fileID: 1987974882}
   - component: {fileID: 1987974881}
   - component: {fileID: 1987974880}
+  - component: {fileID: 1987974883}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -11719,6 +11737,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987974878}
   m_CullTransparentMesh: 0
+--- !u!114 &1987974883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987974878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda821618f33fe34cadb425feaf11e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000932407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12186,6 +12215,7 @@ GameObject:
   - component: {fileID: 2113281208}
   - component: {fileID: 2113281207}
   - component: {fileID: 2113281209}
+  - component: {fileID: 2113281210}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -12271,6 +12301,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 99.315636, y: 99.5901}
   m_EdgeRadius: 0
+--- !u!114 &2113281210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113281205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29ead6242aef6a458f8764a29f5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2113949525
 GameObject:
   m_ObjectHideFlags: 0
