@@ -10,11 +10,13 @@ public class Receipt : MonoBehaviour {
     public Material material3;
     public Material material4;
 
+    public GameObject panel;
+
     void Start()
     {
         material1 = selectedObjs[0].GetComponent<MeshRenderer>().materials[0];
         material2 = selectedObjs[1].GetComponent<MeshRenderer>().materials[0];
-
+        panel.SetActive(false);
     }
 
 
@@ -31,5 +33,10 @@ public class Receipt : MonoBehaviour {
         selectedObjs[0].GetComponent<MeshRenderer>().material = material1;
         selectedObjs[1].GetComponent<MeshRenderer>().material = material2;
         selectedObjs[2].GetComponent<MeshRenderer>().material = material2;
+    }
+
+    void OnMouseDown()
+    {
+        panel.SetActive(true);
     }
 }
