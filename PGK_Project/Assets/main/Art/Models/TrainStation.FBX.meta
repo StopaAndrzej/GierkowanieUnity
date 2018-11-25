@@ -71,6 +71,8 @@ ModelImporter:
     100130: Line177
     100132: //RootNode
     100134: Window045
+    100136: Object
+    100138: Object002
     400000: Box001
     400002: Box002
     400004: Box003
@@ -139,6 +141,8 @@ ModelImporter:
     400130: Line177
     400132: //RootNode
     400134: Window045
+    400136: Object
+    400138: Object002
     2100000: 14 - Default
     2100002: 19 - Default
     2100004: No Name
@@ -213,6 +217,8 @@ ModelImporter:
     2300126: Line175
     2300128: Line176
     2300130: Line177
+    2300132: Object
+    2300134: Object002
     3300000: Box001
     3300002: Box002
     3300004: Box003
@@ -279,6 +285,8 @@ ModelImporter:
     3300126: Line175
     3300128: Line176
     3300130: Line177
+    3300132: Object
+    3300134: Object002
     4300000: Box001
     4300002: Box002
     4300004: Box003
@@ -345,6 +353,8 @@ ModelImporter:
     4300126: Line124
     4300128: Line177
     4300130: Cylinder002
+    4300132: Object
+    4300134: Object002
   externalObjects: {}
   materials:
     importMaterials: 1

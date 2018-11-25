@@ -12,6 +12,9 @@ public class PanelAnimationScript : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
+
+    
+
     public void Animate()
     {
         anim.Play("HideMenuPanel");
