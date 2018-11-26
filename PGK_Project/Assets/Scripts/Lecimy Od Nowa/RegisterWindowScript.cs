@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RegisterWindowScript : MonoBehaviour {
 
-    public GameObject exitButton;
-    public GameObject plusButton;
-    public GameObject minusButton;
-    public TextMeshProUGUI price;
+    public Button exitButton;
+    public Button plusButton;
+    public Button minusButton;
+    public Button normalButton;
+    public TextMeshProUGUI priceText;
 
 
     // Use this for initialization
     void Start () {
-		
+        exitButton.onClick.AddListener(closePanel);
+        plusButton.onClick.AddListener(delegate { setTicketPrice(GameState.ticketPrice + 1); });
+        minusButton.onClick.AddListener(delegate { setTicketPrice(GameState.ticketPrice - 1); });
+        normalButton.onClick.AddListener(delegate { setTicketPrice(GameState.normalTicketPrice); });
+        setTicketPrice(GameState.ticketPrice);
 	}
 	
 	// Update is called once per frame
@@ -25,6 +31,16 @@ public class RegisterWindowScript : MonoBehaviour {
 
     }
 
-
-    
+    private void closePanel()
+    {
+        gameObject.SetActive(false);
+    }
+    private void setTicketPrice(int price)
+    {
+        if(price > 0)
+        {
+            GameState.ticketPrice = price;
+            priceText.SetText(price.ToString() + "$");
+        }
+    }
 }

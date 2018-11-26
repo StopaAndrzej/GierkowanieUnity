@@ -22,9 +22,12 @@ public class stationRoom3 : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        selectedObjs[0].GetComponent<MeshRenderer>().material = material3;
-        selectedObjs[1].GetComponent<MeshRenderer>().material = material4;
-        selectedObjs[2].GetComponent<MeshRenderer>().material = material4;
+        if (GameState.isStarted)
+        {
+            selectedObjs[1].GetComponent<MeshRenderer>().material = material4;
+            selectedObjs[0].GetComponent<MeshRenderer>().material = material3;
+            selectedObjs[2].GetComponent<MeshRenderer>().material = material4;
+        }
     }
 
 

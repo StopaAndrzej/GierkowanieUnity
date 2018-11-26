@@ -40,6 +40,7 @@ public class SelectMenuOptions : MonoBehaviour {
         if (id_Option == 1)
         {
             Debug.Log("nowa gra!");
+            GameState.isStarted = true;
             minute.transform.localRotation= Quaternion.Euler(0, 90, 0);
             hour.transform.localRotation = Quaternion.Euler(0, 90, 115);
             ParentWithAnimations.GetComponent<PanelAnimationScript>().Animate();
