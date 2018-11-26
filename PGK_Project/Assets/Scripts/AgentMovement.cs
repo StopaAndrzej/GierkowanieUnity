@@ -3,29 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgentMovement : MonoBehaviour {
+public class AgentMovement : MonoBehaviour
+{
 
     public Transform home;
     NavMeshAgent agent;
     private string nameOfPath;
+    public bool readyToBuyTicet;
 
 
-
-	// Use this for initialization
-	void Start () {
-       
+    // Use this for initialization
+    void Start()
+    {
+        readyToBuyTicet = false;
         var randomInt = Random.Range(0, 6);
         nameOfPath = "CapsuleDestinationEntrance";
         home = GameObject.Find(nameOfPath).transform;
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(home.position);
         agent.GetComponent<NavMeshAgent>().speed = 10 + Random.Range(-3f, 3f);
-        transform.localScale = new Vector3(transform.localScale.x*3,transform.localScale.y * 4 + Random.Range(-0.1f, 0.1f),transform.localScale.z*3);
-   
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        transform.localScale = new Vector3(transform.localScale.x * 3, transform.localScale.y * 4 + Random.Range(-0.1f, 0.1f), transform.localScale.z * 3);
+
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "TicketOffice")
+        {
+            readyToBuyTicet = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "TicketOffice")
+        {
+            readyToBuyTicet = false;
+        }
+    }
 }

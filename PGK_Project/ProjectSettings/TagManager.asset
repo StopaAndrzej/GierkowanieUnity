@@ -21,6 +21,7 @@ TagManager:
   - ChangeAngle
   - Dock
   - UiPanel
+  - TicketOffice
   layers:
   - Default
   - TransparentFX
