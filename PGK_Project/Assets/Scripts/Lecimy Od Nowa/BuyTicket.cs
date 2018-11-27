@@ -9,9 +9,11 @@ public class BuyTicket : MonoBehaviour {
     public int normalPrice;
     public int demand;
     public float timer;
+    public int whichPeron;
 
     public List<GameObject> npcReadyToBuyTicket;
     public GameObject npcToDestroy;
+    public List<GameObject> perons;
 
     // Use this for initialization
     void Start () {
@@ -34,6 +36,8 @@ public class BuyTicket : MonoBehaviour {
                 Destroy(npcToDestroy);
                 Debug.Log("Ticket bought!");
                 money += ticketPrice;
+                whichPeron = Random.Range(0, 2);
+                perons[whichPeron].GetComponent<PeopleSpawner1>().SpawnOnPeron();
             }
             timer = 0;
         }
