@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour {
     {
         turbo = 1.0f;
         isGameOver = false;
+        GameState.isStarted = true;
     }
 
     void Update() {
