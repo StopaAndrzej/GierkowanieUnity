@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class TrainMovement : MonoBehaviour {
 
-    public LineRenderer lineRendererGreen;
-    public LineRenderer lineRendererRed;
     public float maxSteerAngle = 40f;
-    public float moveSpeed = 0.1f;
+    public float moveSpeed = 1f;
     public TrainTrack currentNode;
     public TrainTrack[] properPath;
     public TrainTrack[] currentPath;
@@ -16,24 +14,12 @@ public class TrainMovement : MonoBehaviour {
     public bool isTrainFocused = false;
     public GameObject destination;
     public GameObject pos;
-    public GameObject trainTracks;
 
     private LineRenderer greenLineRenderer = null;
     private LineRenderer redLineRenderer = null;
 
     void Start()
     {
-        properPath = trainTracks.GetComponent<TrainPath>().peron1Path;
-        nodesToTarget = new List<TrainTrack>(properPath);
-        greenLineRenderer = Instantiate(lineRendererGreen);
-        redLineRenderer = Instantiate(lineRendererRed);
-        greenLineRenderer.positionCount = 0;
-        redLineRenderer.positionCount = 0;
-        Debug.Log(pos);
-
-        pos = properPath[properPath.Length - 1].gameObject;
-        Debug.Log(pos);
-        GameObject dest = Instantiate(destination, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
     }
 
 
@@ -81,7 +67,7 @@ public class TrainMovement : MonoBehaviour {
 
     private void CheckNodeDistance()
     {
-        if (Vector3.Distance(transform.position, currentNode.transform.position) < 1f)
+        if (Vector3.Distance(transform.position, currentNode.transform.position) < 40f)
         {
             currentNode = currentNode.nextTrack;
         }
@@ -151,5 +137,20 @@ public class TrainMovement : MonoBehaviour {
     private void OnMouseDown()
     {
         isTrainFocused = true;
+    }
+
+    public void setPath(TrainTrack[] path, LineRenderer lineRendererGreen, LineRenderer lineRendererRed)
+    {
+        properPath = path;
+        nodesToTarget = new List<TrainTrack>(properPath);
+        greenLineRenderer = Instantiate(lineRendererGreen);
+        redLineRenderer = Instantiate(lineRendererRed);
+        greenLineRenderer.positionCount = 0;
+        redLineRenderer.positionCount = 0;
+        Debug.Log(pos);
+
+        pos = properPath[properPath.Length - 1].gameObject;
+        GameObject dest = Instantiate(destination, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        currentNode = properPath[0];
     }
 }
