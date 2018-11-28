@@ -18,8 +18,12 @@ public class TrainMovement : MonoBehaviour {
     private LineRenderer greenLineRenderer = null;
     private LineRenderer redLineRenderer = null;
 
+    public bool readyToGo;
+
+
     void Start()
     {
+        readyToGo = false;
     }
 
 

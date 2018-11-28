@@ -124,9 +124,10 @@ GameObject:
   - component: {fileID: 114935620161774326}
   - component: {fileID: 65457993133309396}
   - component: {fileID: 54619926686699216}
+  - component: {fileID: 114683391577482510}
   m_Layer: 0
   m_Name: TrainPassanger
-  m_TagString: Untagged
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,6 +753,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35410908, y: 0.34533757, z: 1.8220805}
   m_Center: {x: 0.019935703, y: 0.03241026, z: -0.23898558}
+--- !u!114 &114683391577482510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506033863668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f3674d63f314742b8b15729d624db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material1: {fileID: 0}
+  material2: {fileID: 2100000, guid: 1250c2f905d7bdd489d78a948e506d11, type: 2}
 --- !u!114 &114935620161774326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,3 +789,4 @@ MonoBehaviour:
   destination: {fileID: 1774352149700044, guid: f17dc89094498c040b83bc61722c1dc1,
     type: 2}
   pos: {fileID: 0}
+  readyToGo: 0

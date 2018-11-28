@@ -26,7 +26,7 @@ public class StopTrainPeron : MonoBehaviour {
         }
         if (isStoped)
         {
-            if (thisGameObject.GetComponentInParent<TrainMove2>().readyToGo == true)
+            if (thisGameObject.GetComponent<TrainMovement>().readyToGo == true)
             {
                 SpeedUpTheTrain(thisGameObject);
             }
@@ -39,9 +39,9 @@ public class StopTrainPeron : MonoBehaviour {
        if (other.transform.tag == "Train")
        {
            Debug.Log("STOP!!!");
-           lastSpeed = other.GetComponentInParent<TrainMove2>().speed;
+           lastSpeed = other.GetComponent<TrainMovement>().moveSpeed;
            thisGameObject = other.gameObject;
-           slowDownParameter=1;
+           slowDownParameter=0.001f;
            slowDown = true;
            
           
@@ -65,31 +65,31 @@ public class StopTrainPeron : MonoBehaviour {
 
     private void SlowDownTheTrain(GameObject obj)
     {
-        if (obj.GetComponentInParent<TrainMove2>().speed > 0)
+        if (obj.GetComponent<TrainMovement>().moveSpeed > 0)
         {
             
-            obj.GetComponentInParent<TrainMove2>().speed -= slowDownParameter;
+            obj.GetComponent<TrainMovement>().moveSpeed -= slowDownParameter;
             slowDownParameter *= 1.02f;
         }
         else
         {
             slowDownParameter = 1;
-            obj.GetComponentInParent<TrainMove2>().speed = 0;
+            obj.GetComponent<TrainMovement>().moveSpeed = 0;
             isStoped = true ;
         }
     }
 
     private void SpeedUpTheTrain(GameObject obj)
     {
-        if(obj.GetComponentInParent<TrainMove2>().speed < lastSpeed)
+        if(obj.GetComponent<TrainMovement>().moveSpeed < lastSpeed)
         {
-            obj.GetComponentInParent<TrainMove2>().speed += slowDownParameter;
+            obj.GetComponent<TrainMovement>().moveSpeed += slowDownParameter;
             slowDownParameter *= 1.02f;
         }
         else
         {
             slowDownParameter = 1;
-            obj.GetComponentInParent<TrainMove2>().speed = lastSpeed;
+            obj.GetComponent<TrainMovement>().moveSpeed = lastSpeed;
             slowDown = false;
             isStoped = false;
         }
