@@ -16,12 +16,14 @@ public class TrainMovement : MonoBehaviour {
     public bool isTrainFocused = false;
     public GameObject destination;
     public GameObject pos;
+    public GameObject trainTracks;
 
     private LineRenderer greenLineRenderer = null;
     private LineRenderer redLineRenderer = null;
 
     void Start()
     {
+        properPath = trainTracks.GetComponent<TrainPath>().peron1Path;
         nodesToTarget = new List<TrainTrack>(properPath);
         greenLineRenderer = Instantiate(lineRendererGreen);
         redLineRenderer = Instantiate(lineRendererRed);
@@ -121,7 +123,7 @@ public class TrainMovement : MonoBehaviour {
         for (int i = 0; i < nodes.Count; i++)
         {
             Vector3 currentNode = nodes[i].position;
-             currentNode.y += 0.5f;
+             currentNode.y += 10f;
             lineRenderer.SetPosition(i + j, currentNode);
         }
     }
