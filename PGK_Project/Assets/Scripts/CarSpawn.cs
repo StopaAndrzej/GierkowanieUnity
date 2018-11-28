@@ -5,9 +5,9 @@ using UnityEngine;
 public class CarSpawn : MonoBehaviour {
 
     public Transform pos;
-    public GameObject go;
+    public GameObject carPrefab;
     public GameObject currentSpawnedCar;
-    public GameObject parent;
+    public GameObject carFolder;
 
     double timer = 0.0;
     int period=1;
@@ -32,7 +32,7 @@ public class CarSpawn : MonoBehaviour {
     void spawnCar()
     {
         int r = Random.Range(1, 3);
-        currentSpawnedCar = Instantiate(go, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), parent.transform);
+        currentSpawnedCar = Instantiate(carPrefab, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), carFolder.transform);
         GameObject.Find("EventList").GetComponent<AddObjectToList>().addItem(currentSpawnedCar);
         if (r == 1)
         {

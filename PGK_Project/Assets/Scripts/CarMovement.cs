@@ -9,7 +9,7 @@ public class CarMovement : MonoBehaviour {
 	public Transform[] path;
     public Transform currentPath;
     public float maxSteerAngle = 40f;
-	public float moveSpeed = 0.2f;
+	public float moveSpeed = 1f;
     public GameObject model1;
     public GameObject model2;
     public GameObject[] gos;
@@ -20,10 +20,10 @@ public class CarMovement : MonoBehaviour {
 
     void Start () {
         
-        moveSpeed = 0.1f;
+        moveSpeed = 1f;
 
 
-        //currentPath = findClosestSpawn().transform;
+        currentPath = findClosestSpawn().transform;
         dispatcher = GameObject.Find("Dispatcher");//przypisanie dyspozytorni ciezarowek
         Transform[] pathTransforms = currentPath.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
@@ -59,11 +59,11 @@ public class CarMovement : MonoBehaviour {
 
 	private void CheckNodeDistance(){
 
-		if(Vector3.Distance(transform.position, nodes[currentNode].position) < 1f){
+		if(Vector3.Distance(transform.position, nodes[currentNode].position) < 10f){
 			if(currentNode == nodes.Count - 1){
 				currentNode = 0;
                 Destroy(gameObject);
-                dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers++;
+                //dispatcher.GetComponent<Dispatcher>().actuallNumberWorkers++;
             }
             else
             {

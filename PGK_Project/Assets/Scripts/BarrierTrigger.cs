@@ -54,7 +54,7 @@ public class BarrierTrigger : MonoBehaviour {
         //}
 	}
 
-    private void OnMouseDown()
+    public void triggerBarrier()
     {
         if(isBarrierOpened && clickDelay >= 5.0f)
         {

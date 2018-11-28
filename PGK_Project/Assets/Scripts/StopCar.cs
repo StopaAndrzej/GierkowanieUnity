@@ -29,7 +29,7 @@ public class StopCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (insideBarierTrigger == true && savedBarrier.GetComponent<BoxCollider>().enabled == false)
+        if (insideBarierTrigger == true && GameObject.Find("Barriers").GetComponent<BarrierTrigger>().isBarrierOpened)
         {
             car.GetComponent<CarMovement>().moveSpeed = moveSpeed;
             timer = 0.0f;
@@ -52,9 +52,9 @@ public class StopCar : MonoBehaviour
     {
         Debug.Log(gameObject.name + " collided with " + other.name);
 
-        GameObject go = GameObject.Find("BarrierTriggerCube");
+        BarrierTrigger barrier = GameObject.Find("Barriers").GetComponent<BarrierTrigger>();
         //BarrierTrigger b = go.GetComponent<BarrierTrigger>();
-        if (other.transform.tag == "barrier")
+        if (other.transform.tag == "barrier" && !barrier.isBarrierOpened)
         {
             moveSpeed = car.GetComponent<CarMovement>().moveSpeed;
             car.GetComponent<CarMovement>().moveSpeed = 0;
