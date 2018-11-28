@@ -44,7 +44,9 @@ public class SelectMenuOptions : MonoBehaviour {
             minute.transform.localRotation= Quaternion.Euler(0, 90, 0);
             hour.transform.localRotation = Quaternion.Euler(0, 90, 115);
             ParentWithAnimations.GetComponent<PanelAnimationScript>().Animate();
-            camera1.GetComponent<CameraControll>().Animate();
+            camera1.GetComponent<Transform>().transform.position = new Vector3(77, 352.4f, 140);
+            camera1.GetComponent<Transform>().transform.localRotation = Quaternion.Euler(90f, 0, 0);
+            camera1.GetComponent<CameraControll>().gameStarted = true;
         }
     }
 }

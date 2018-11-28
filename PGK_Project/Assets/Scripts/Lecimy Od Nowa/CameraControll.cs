@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour {
 
-    public Animator anim;
+
 
     public float panSpeed = 20f;
     public float turbo;
@@ -14,20 +14,39 @@ public class CameraControll : MonoBehaviour {
     public float maxY = 20f;
     public float scrollSpeed = 10f;
     public Vector2 panLimit;
+    public bool gameStarted;
+    public int view;
 
+    public Quaternion target;
     // Use this for initialization
     void Start () {
-        anim = GetComponent<Animator>();
-
+        view = 1; ;
+        gameStarted = false;
         turbo = 1.0f;
         isGameOver = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!isGameOver)
+        if (!isGameOver && gameStarted)
         {
-            Vector3 pos = transform.position;
+            if (Input.GetKeyDown("space"))
+            {
+                if (view == 1)
+                {
+                    view = 2;
+                    target = Quaternion.Euler(45, 0, 0);
+                    
+                }
+                else if (view == 2)
+                {
+                    view = 1;
+                    target = Quaternion.Euler(90, 0, 0);
+                }
+            }
+
+
+            Vector3 pos = transform.localPosition;
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -59,7 +78,7 @@ public class CameraControll : MonoBehaviour {
             }
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            pos.y -= scroll * scrollSpeed * Time.deltaTime * 100f;
+            pos.y -= scroll * scrollSpeed * Time.deltaTime * 100f * turbo;
 
 
             pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
@@ -68,13 +87,10 @@ public class CameraControll : MonoBehaviour {
             pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
 
-            transform.position = pos;
+            transform.localPosition = pos;
+            transform.rotation = Quaternion.Lerp(transform.rotation, target,  0.1f);
         }
             
     }
 
-    public void Animate()
-    {
-        anim.Play("CameraNewGame");
-    }
 }
