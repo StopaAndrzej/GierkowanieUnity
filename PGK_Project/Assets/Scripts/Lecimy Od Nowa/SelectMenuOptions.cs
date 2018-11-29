@@ -12,6 +12,7 @@ public class SelectMenuOptions : MonoBehaviour {
     public GameObject hour;
     public GameObject ParentWithAnimations;
     public GameObject camera1;
+    public GameObject reportsTester;
 
     // Use this for initialization
     void Start () {
@@ -47,6 +48,7 @@ public class SelectMenuOptions : MonoBehaviour {
             camera1.GetComponent<Transform>().transform.position = new Vector3(77, 352.4f, 140);
             camera1.GetComponent<Transform>().transform.localRotation = Quaternion.Euler(90f, 0, 0);
             camera1.GetComponent<CameraControll>().gameStarted = true;
+            reportsTester.GetComponent<DummyTrainData>().fillWithData();
         }
     }
 }

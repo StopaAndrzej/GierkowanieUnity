@@ -16,14 +16,18 @@ public class CameraControll : MonoBehaviour {
     public Vector2 panLimit;
     public bool gameStarted;
     public int view;
+    public bool isFolowingTarget;
 
     public Quaternion target;
+
+    private GameObject targetToFollow;
     // Use this for initialization
     void Start () {
         view = 1; ;
         gameStarted = false;
         turbo = 1.0f;
         isGameOver = false;
+        isFolowingTarget = false;
     }
 	
 	// Update is called once per frame
@@ -45,8 +49,17 @@ public class CameraControll : MonoBehaviour {
                 }
             }
 
-
             Vector3 pos = transform.localPosition;
+
+            if (isFolowingTarget)
+            {
+                pos.x = targetToFollow.transform.position.x;
+                pos.z = targetToFollow.transform.position.z;
+                if(view == 2)
+                {
+                    pos.z = pos.z - 150;
+                }
+            }
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -60,21 +73,25 @@ public class CameraControll : MonoBehaviour {
             if (Input.GetKey("d"))
             {
                 pos.x += panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("a"))
             {
                 pos.x -= panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("s"))
             {
                 pos.z -= panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             if (Input.GetKey("w"))
             {
                 pos.z += panSpeed * Time.deltaTime * turbo;
+                stopFollowingTarget();
             }
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -92,5 +109,16 @@ public class CameraControll : MonoBehaviour {
         }
             
     }
+    public void followTarget(GameObject o)
+    {
+        targetToFollow = o;
+        isFolowingTarget = true;
+        view = 2;
+        target = Quaternion.Euler(45, 0, 0);
+    }
 
+    public void stopFollowingTarget()
+    {
+        isFolowingTarget = false;
+    }
 }

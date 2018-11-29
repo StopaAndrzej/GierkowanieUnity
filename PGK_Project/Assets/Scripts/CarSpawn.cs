@@ -33,7 +33,7 @@ public class CarSpawn : MonoBehaviour {
     {
         int r = Random.Range(1, 3);
         currentSpawnedCar = Instantiate(carPrefab, pos.transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), carFolder.transform);
-        GameObject.Find("EventList").GetComponent<AddObjectToList>().addItem(currentSpawnedCar);
+        //GameObject.Find("EventList").GetComponent<AddObjectToList>().addItem(currentSpawnedCar);
         if (r == 1)
         {
             currentSpawnedCar.GetComponent<CarMovement>().model2.SetActive(false);

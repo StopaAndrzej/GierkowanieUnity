@@ -24,14 +24,14 @@ class TrainTimeline : MonoBehaviour
         //  timelineId++;
 
         // Dummy data.
-        if (data != null)
+        if (data != null && GameState.isStarted)
         {
             foreach (DummyStation station in data.stations)
             {
                 TimelineGUI(timelineId);
                 foreach (DummyTrain train in station.trains)
                 {
-                    TrainGUI(timelineId, train.distance, station.maxDistance, null);
+                    TrainGUI(timelineId, train.timeToSpawn, station.maxTime, null);
                 }
                 timelineId++;
             }

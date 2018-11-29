@@ -48,8 +48,11 @@ public class TrainMovement : MonoBehaviour {
             drawProperPath(wrongNodes.ToArray(), redLineRenderer);
         } else
         {
-            greenLineRenderer.positionCount = 0;
-            redLineRenderer.positionCount = 0;
+            if(greenLineRenderer != null && redLineRenderer != null)
+            {
+                greenLineRenderer.positionCount = 0;
+                redLineRenderer.positionCount = 0;
+            }
         }
     }
 
@@ -140,17 +143,22 @@ public class TrainMovement : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        greenLineRenderer = GameObject.Find("LineRendererGreen").GetComponent<LineRenderer>();
+        redLineRenderer = GameObject.Find("LineRendererRed").GetComponent<LineRenderer>();
+        greenLineRenderer.positionCount = 0;
+        redLineRenderer.positionCount = 0;
         isTrainFocused = true;
     }
 
-    public void setPath(TrainTrack[] path, LineRenderer lineRendererGreen, LineRenderer lineRendererRed)
+    public void setPath(TrainTrack[] path)
     {
         properPath = path;
         nodesToTarget = new List<TrainTrack>(properPath);
-        greenLineRenderer = Instantiate(lineRendererGreen);
-        redLineRenderer = Instantiate(lineRendererRed);
-        greenLineRenderer.positionCount = 0;
-        redLineRenderer.positionCount = 0;
+        if(greenLineRenderer != null && redLineRenderer!= null)
+        {
+            greenLineRenderer.positionCount = 0;
+            redLineRenderer.positionCount = 0;
+        }
         Debug.Log(pos);
 
         pos = properPath[properPath.Length - 1].gameObject;

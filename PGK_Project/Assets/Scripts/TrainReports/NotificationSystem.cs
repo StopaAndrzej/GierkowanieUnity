@@ -49,9 +49,9 @@ class NotificationSystem : MonoBehaviour
         {
             if (GUILayout.Button(notifications[i].message))
             {
+                GameObject.Find("Main Camera").GetComponent<CameraControll>().followTarget(notifications[i].gameObject);
                 notifications.RemoveAt(i);
                 i--;
-                // todo: Focus camera on notification game object.
             }
         }
 
