@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrainPanel : MonoBehaviour {
 
+    public int ID;
+
     public Material material1;
     public Material material2;
     public GameObject panel;
@@ -11,14 +13,23 @@ public class TrainPanel : MonoBehaviour {
     public int capacity1;
     public int maxCapacity1;
 
+
+    public bool isOpened1;
+
     void Start()
     {
+
+        material1 = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2];
         capacity1 = 0;
         maxCapacity1 = 16;
-        panel.SetActive(false);
-        material1 = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2];
-        panel = Resources.FindObjectsOfTypeAll<TrainScript>()[0].gameObject;
-        Debug.Log(Resources.FindObjectsOfTypeAll<TrainScript>()[0].gameObject);
+        isOpened1 = false;
+
+    }
+
+    void Update()
+    {
+
+          //  panel.GetComponent<TrainScript>().text.SetText(capacity1.ToString()+"/"+maxCapacity1.ToString());
     }
 
 
@@ -36,8 +47,17 @@ public class TrainPanel : MonoBehaviour {
 
     void OnMouseDown()
     {
-        panel.SetActive(true);
-        panel.GetComponent<TrainScript>().capacity = capacity1;
+        panel = Resources.FindObjectsOfTypeAll<TrainScript>()[0].gameObject;
+        panel.GetComponent<TrainScript>().actualCapacity = capacity1;
         panel.GetComponent<TrainScript>().maxCapacity = maxCapacity1;
+        if (isOpened1)
+        {
+            isOpened1 = false;
+        }
+        else if (!isOpened1)
+        {
+            isOpened1 = true;
+        }
+        panel.GetComponent<TrainScript>().isOpened = isOpened1;
     }
 }

@@ -20,7 +20,7 @@ public class TrainMovement : MonoBehaviour {
     private LineRenderer redLineRenderer = null;
 
     public bool readyToGo;
-
+    public bool isStaying;
 
     void Start()
     {
@@ -31,6 +31,16 @@ public class TrainMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (moveSpeed == 0)
+        {
+            isStaying = true;
+        }
+        else if(moveSpeed!=0)
+        {
+            isStaying = false;
+        }
+
+
         if (Input.GetMouseButton(1))
         {
             isTrainFocused = false;

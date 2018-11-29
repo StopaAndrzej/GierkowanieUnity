@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PeopleSpawner1 : MonoBehaviour
 {
-
+    
     public Transform pos;
     public GameObject go;
     double timer = 0.0;

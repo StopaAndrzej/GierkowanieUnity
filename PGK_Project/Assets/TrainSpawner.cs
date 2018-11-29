@@ -13,6 +13,7 @@ public class TrainSpawner : MonoBehaviour {
     public LineRenderer lineRendererRed;
     public float timeToNextSpawn = 10f;
     public int peron = 1;
+    public int individualTrainID=0;
 
     private void Start()
     {
@@ -44,11 +45,14 @@ public class TrainSpawner : MonoBehaviour {
     public GameObject spawnPassangerTrain(GameObject prefab)
     {
         return Instantiate(prefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        individualTrainID++;
     }
 
     public void spawnTrain(int peron)
     {
         spawnedTrain = spawnPassangerTrain(passangerTrainPrefab);
+        individualTrainID++;
+        spawnedTrain.GetComponent<TrainPanel>().ID = individualTrainID;
         if (peron == 1)
         {
             TrainTrack[] properPath = trainTracks.GetComponent<TrainPath>().peron1Path;
