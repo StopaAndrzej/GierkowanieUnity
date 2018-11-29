@@ -24,6 +24,6 @@ public class TrainPanel : MonoBehaviour {
     void OnMouseExit()
     {
         Debug.Log("!zmien");
-        gameObject.transform.GetChild(0).GetComponent<MeshRenderer>()material = material1;
+        gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = material1;
     }
 }
