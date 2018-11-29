@@ -14,7 +14,7 @@ public class SteeringArrow : MonoBehaviour {
         if (changeSteering == true)
         {
             //transform.localRotation.y= new Vector3(0)
-            transform.localEulerAngles = new Vector3(0, angle - angle2, 0);
+            transform.localEulerAngles = new Vector3(0, angle2, 0);
             changeSteering = false;
         }
         
