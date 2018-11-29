@@ -10,9 +10,6 @@ public class Lever : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Debug.Log(previousNode.nextTrack);
-        Debug.Log(nextNode1);
-        Debug.Log(nextNode2);
 
         if (previousNode.nextTrack == nextNode1)
         {
@@ -20,6 +17,7 @@ public class Lever : MonoBehaviour {
         } else {
             previousNode.nextTrack = nextNode1;
         }
+        Debug.Log(previousNode.nextTrack);
 
     }
 }

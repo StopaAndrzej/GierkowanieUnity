@@ -28,7 +28,7 @@ public class BrokenTrack : MonoBehaviour
     {
         if (progressBar.isComplete)
         {
-            gameObject.GetComponentInParent<TrainTrack>().broken = false;
+            //gameObject.GetComponentInParent<TrainTrack>().broken = false;
             Cursor.SetCursor(null, hotSpot, cursorMode);
             progressBar.reset();
         }

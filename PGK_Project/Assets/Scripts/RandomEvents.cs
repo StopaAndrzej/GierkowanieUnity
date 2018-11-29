@@ -21,7 +21,7 @@ public class RandomEvents : MonoBehaviour
         if (time > timeToNextEvent)
         {
             GameObject o = randomTrackPos();
-            o.GetComponent<TrainTrack>().broken = true;
+            //o.GetComponent<TrainTrack>().broken = true;
             time = 0;
         }
     }
