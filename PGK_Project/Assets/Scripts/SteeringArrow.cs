@@ -9,7 +9,7 @@ public class SteeringArrow : MonoBehaviour {
     public int angle2;
 
 
-    public void OnMouseDown()
+    public void change()
     {
         if (changeSteering == true)
         {
