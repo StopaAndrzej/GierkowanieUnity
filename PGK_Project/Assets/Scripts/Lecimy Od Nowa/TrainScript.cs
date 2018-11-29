@@ -9,8 +9,8 @@ public class TrainScript : MonoBehaviour {
     public Button exitButton;
     public Button overFillButton;
     public Button openButton;
-    public TextMeshProUGUI capacity;
-
+    public TextMeshProUGUI text;
+    public int capacity;
     public int actualCapacity;
     public Image box;
     public int maxCapacity;
@@ -32,10 +32,7 @@ public class TrainScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButton(0))
-        {
-            Debug.Log("Klik");
-        }
+        text.SetText(capacity.ToString() + "/" + maxCapacity.ToString());
     }
 
     private void closePanel()
@@ -49,7 +46,7 @@ public class TrainScript : MonoBehaviour {
         {
             onlyOnce = true;
             maxCapacity += 8;
-            capacity.SetText(actualCapacity.ToString() + "/" + maxCapacity.ToString());
+            text.SetText(actualCapacity.ToString() + "/" + maxCapacity.ToString());
             box.GetComponent<Image>().color = new Color32(236, 147, 137, 255);
         }
     }

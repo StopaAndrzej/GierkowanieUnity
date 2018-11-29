@@ -766,6 +766,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material1: {fileID: 0}
   material2: {fileID: 2100000, guid: 1250c2f905d7bdd489d78a948e506d11, type: 2}
+  panel: {fileID: 1284644258398822, guid: 9237a3ab264690b43ace04f0a5de7f7a, type: 2}
+  capacity1: 0
+  maxCapacity1: 0
 --- !u!114 &114935620161774326
 MonoBehaviour:
   m_ObjectHideFlags: 1

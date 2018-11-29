@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrainMovement : MonoBehaviour {
 
+
     public float maxSteerAngle = 40f;
     public float moveSpeed = 1f;
     public TrainTrack currentNode;
@@ -23,6 +24,7 @@ public class TrainMovement : MonoBehaviour {
 
     void Start()
     {
+        
         readyToGo = false;
     }
 
