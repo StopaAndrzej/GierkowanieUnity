@@ -19,7 +19,7 @@ public class TrainScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
         isReadyToGo = 0;
         onlyOnce = false;
         exitButton.onClick.AddListener(closePanel);

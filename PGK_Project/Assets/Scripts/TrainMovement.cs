@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainMovement : MonoBehaviour {
 
-
+    public GameObject childCollider;
     public float maxSteerAngle = 40f;
     public float moveSpeed = 1f;
     public TrainTrack currentNode;
@@ -15,6 +15,10 @@ public class TrainMovement : MonoBehaviour {
     public bool isTrainFocused = false;
     public GameObject destination;
     public GameObject pos;
+    public int peron;
+
+    public bool load;
+    public int cliked;
 
     private LineRenderer greenLineRenderer = null;
     private LineRenderer redLineRenderer = null;
@@ -24,8 +28,9 @@ public class TrainMovement : MonoBehaviour {
 
     void Start()
     {
-        
+        load = false;
         readyToGo = false;
+        cliked = 0;
     }
 
 
@@ -160,6 +165,16 @@ public class TrainMovement : MonoBehaviour {
         greenLineRenderer.positionCount = 0;
         redLineRenderer.positionCount = 0;
         isTrainFocused = true;
+
+        if (load)
+        {
+            cliked++;
+            Debug.Log("CLICKED:" + cliked);
+            if (cliked >= 2)
+            {
+                readyToGo = true;
+            }
+        }
     }
 
     public void setPath(TrainTrack[] path)

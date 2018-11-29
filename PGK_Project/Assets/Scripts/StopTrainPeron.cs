@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StopTrainPeron : MonoBehaviour {
 
+    public bool load;
+
     private bool slowDown;
     private bool isStoped;
 
@@ -17,6 +19,7 @@ public class StopTrainPeron : MonoBehaviour {
        isStoped = false;
        slowDown = false;
        slowDownParameter = 1;
+        load = false;
     }
 
     void FixedUpdate () {
@@ -43,8 +46,16 @@ public class StopTrainPeron : MonoBehaviour {
            thisGameObject = other.gameObject;
            slowDownParameter=0.001f;
            slowDown = true;
-           
-          
+
+            if (gameObject.GetComponent<CheckPeronID>().peronID == other.GetComponent<TrainMovement>().peron)
+            {
+                Debug.Log("DobryPeron");
+                other.GetComponent<TrainMovement>().load = true;
+            }
+            else if (gameObject.GetComponent<CheckPeronID>().peronID !=other.GetComponent<TrainMovement>().peron)
+            {
+                Debug.Log("ZlyPeron!");
+            }
 
             
             //isStoped = true;
@@ -81,17 +92,14 @@ public class StopTrainPeron : MonoBehaviour {
 
     private void SpeedUpTheTrain(GameObject obj)
     {
-        if(obj.GetComponent<TrainMovement>().moveSpeed < lastSpeed)
-        {
-            obj.GetComponent<TrainMovement>().moveSpeed += slowDownParameter;
-            slowDownParameter *= 1.02f;
-        }
-        else
-        {
-            slowDownParameter = 1;
+       
             obj.GetComponent<TrainMovement>().moveSpeed = lastSpeed;
+         
+       
+            
+            
             slowDown = false;
             isStoped = false;
-        }
+        
     }
 }

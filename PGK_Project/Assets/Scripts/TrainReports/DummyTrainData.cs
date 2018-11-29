@@ -39,20 +39,20 @@ public class DummyTrainData : MonoBehaviour
         notificationTreshold = 0.0f;
 
         DummyTrain t1 = new DummyTrain();
-        t1.timeToSpawn = 15;
+        t1.timeToSpawn = 30;
         DummyTrain t2 = new DummyTrain();
-        t2.timeToSpawn = 45;
+        t2.timeToSpawn = 80;
         DummyStation s1 = new DummyStation();
-        s1.maxTime = 60;
+        s1.maxTime = 120;
         s1.trains.Add(t1);
         s1.trains.Add(t2);
 
         DummyTrain t3 = new DummyTrain();
-        t3.timeToSpawn = 30;
+        t3.timeToSpawn = 100;
         DummyTrain t4 = new DummyTrain();
-        t4.timeToSpawn = 60;
+        t4.timeToSpawn = 115;
         DummyStation s2 = new DummyStation();
-        s2.maxTime = 60;
+        s2.maxTime = 120;
         s2.trains.Add(t3);
         s2.trains.Add(t4);
 

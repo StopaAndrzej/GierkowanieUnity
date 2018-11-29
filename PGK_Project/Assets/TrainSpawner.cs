@@ -57,11 +57,13 @@ public class TrainSpawner : MonoBehaviour {
         {
             TrainTrack[] properPath = trainTracks.GetComponent<TrainPath>().peron1Path;
             spawnedTrain.GetComponent<TrainMovement>().setPath(properPath);
+            spawnedTrain.GetComponent<TrainMovement>().peron=1;
         }
         else
         {
             TrainTrack[] properPath = trainTracks.GetComponent<TrainPath>().peron2Path;
             spawnedTrain.GetComponent<TrainMovement>().setPath(properPath);
+            spawnedTrain.GetComponent<TrainMovement>().peron = 2;
         }
     }
 }
